@@ -1,7 +1,18 @@
+import { useEffect, useRef, useState } from "react"
 import FooterBar from "../components/footerbar/FooterBar"
 import NavBar from "../components/navbar/NavBar"
 
+import { pagesComponents, type Links } from "../../Types/Typos";
+
+export const pages: Links[] = ["home", "about", "projects", "contact"];
+
 export default function HomeScreen() {
+
+  const [ showNavBar, setShowNavBar ] = useState<boolean>(false)
+  const [activeSection, setActiveSection] = useState<string>("home");
+
+  const scrollRef = useRef<HTMLDivElement>(null)
+
   const handleScroll = (id: string) => {
     const element = document.getElementById(id)
     if(element){
@@ -9,27 +20,92 @@ export default function HomeScreen() {
     }
   }
 
+  const arrowScroll = (direction: "up" | "down") => {
+    const container = scrollRef.current
+    if (!container) return
+
+    const sectionHeight = window.innerHeight
+    const currentScroll = container.scrollTop
+
+    const targetScroll =
+      direction === "down"
+        ? currentScroll + sectionHeight
+        : currentScroll - sectionHeight
+
+    container.scrollTo({
+      top: targetScroll,
+      behavior: "smooth",
+    })
+  }
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]")
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((entry) => entry.isIntersecting)
+        if (visible) {
+          const id = visible.target.id
+          setActiveSection(id)
+        }
+      },
+      {
+        root: scrollRef.current,
+        threshold: 0.5,
+      }
+    )
+
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+  const container = scrollRef.current
+  if (!container) return
+
+  const onScroll = () => {
+    const scrollTop = container.scrollTop
+    const sectionHeight = window.innerHeight
+    setShowNavBar(scrollTop >= sectionHeight * 0.3)
+  }
+
+  container.addEventListener("scroll", onScroll)
+
+  return () => {
+    container.removeEventListener("scroll", onScroll)
+  }
+}, [])
+
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowDown") {
+        arrowScroll("down")
+      } else if (event.key === "ArrowUp") {
+        arrowScroll("up")
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [])
+
   return (
     <div className="w-full h-screen flex flex-col">
-      <div className="fixed w-full z-50">
-        <NavBar onScroll={handleScroll}/>
+      <div className={`fixed top-0 left-0 w-full z-50 transform transition-transform duration-500 ease-in-out ${showNavBar ? "translate-y-0" : "-translate-y-full"}`}>
+        <NavBar onScroll={handleScroll} activeSection={activeSection}/>
       </div>
 
-      <div className="flex-1 overflow-y-scroll snap-y snap-mandatory pt-[80px] hide-scrollbar">
-        <section id="secao1" className="snap-start h-screen flex items-center justify-center bg-zinc-900">
-          <p className="text-2xl">Sessão 1</p>
-        </section>
-        <section id="secao2" className="snap-start h-screen flex items-center justify-center bg-zinc-900">
-          <p className="text-2xl">Sessão 2</p>
-        </section>
-        <section id="secao3" className="snap-start h-screen flex items-center justify-center bg-zinc-900">
-          <p className="text-2xl">Sessão 3</p>
-        </section>
-        <section id="secao4" className="snap-start h-screen flex items-center justify-center bg-zinc-900">
-          <p className="text-2xl">Sessão 4</p>
-        </section>
-
-        <section className="snap-start h-screen flex items-end justify-center bg-zinc-900">
+      <div ref={scrollRef} className="flex-1 overflow-y-scroll snap-y snap-mandatory pt-[80px] hide-scrollbar">
+        {pages.map((page, index) => {
+          return (
+            <section key={index} id={page} className="snap-start h-screen flex items-center justify-center">
+              {pagesComponents[page]}
+            </section>
+          )
+        })}
+        <section className="snap-start h-screen flex items-end justify-center">
           <FooterBar />
         </section>
       </div>

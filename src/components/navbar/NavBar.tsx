@@ -1,22 +1,62 @@
+import { iconsLinks, type Links } from "../../../Types/Typos";
+
 type NavBarProps = {
   onScroll: (id: string) => void;
+  activeSection: string;
 }
 
-export default function NavBar({ onScroll }: NavBarProps) {
+export const links: Links[] = ["home", "about", "projects", "contact"];
+
+export default function NavBar({ onScroll, activeSection }: NavBarProps) {
+
+
   return (
-    <div className="bg-zinc-700 w-full h-[80px] flex items-center justify-between pl-[15px] px-[30px]">
-        <div className="flex-row flex items-center justify-center gap-[20px]">
-            <img src="" alt="" className="border-2 w-[50px] h-[50px] rounded-[25px]"/>
-            <p className="text-[28px]">
-                João Vitor Viana Chaves
-            </p>
-        </div>
-        <div className="flex gap-[70px]">
-            <p className="cursor-pointer hover:text-gray-400 duration-300 trasition-color" onClick={() => onScroll("secao1")}>Link 1</p>
-            <p className="cursor-pointer hover:text-gray-400 duration-300 trasition-color" onClick={() => onScroll("secao2")}>Link 2</p>
-            <p className="cursor-pointer hover:text-gray-400 duration-300 trasition-color" onClick={() => onScroll("secao3")}>Link 3</p>
-            <p className="cursor-pointer hover:text-gray-400 duration-300 trasition-color" onClick={() => onScroll("secao4")}>Link 4</p>
-        </div>
+    <div className="bg-zinc-900 w-full h-[125px] lg:h-[80px] flex flex-col lg:flex-row items-center justify-between lg:px-[30px] px-[15px] border-b-2 rounded-b-xl border-zinc-600">
+      <div className="flex-row w-full flex items-center justify-between lg:justify-start gap-[20px] py-[10px] lg:py-0 lg:pt-0">
+        <img src="../public/Mikola.png" alt="Mikola" className="w-[60px] h-[60px] rounded-[25px]" />
+        <p className="text-[24px] lg:text-[28px]">
+          João Vitor Viana Chaves
+        </p>
+      </div>
+
+      <hr className="w-full border-[1px] rounded-2xl border-zinc-700 lg:hidden" />
+
+      <div className="flex lg:gap-[70px] lg:justify-end lg:w-[50%] py-[10px] lg:py-0 justify-between w-full">
+        {links.map((link, index) => {
+          return (
+            <div
+            key={index}
+            onClick={() => {
+              onScroll(link);
+            }}
+            className={`
+                cursor-pointer 
+                flex 
+                items-center 
+                justify-center
+                gap-[5px]
+                hover:text-gray-400 
+                duration-300 
+                transition-colors 
+                lg:rounded-[20px] 
+                lg:py-[10px] 
+                lg:px-[15px]
+                lg:border-b-2
+                lg:mb-0 
+                border-b-2
+                mb-4
+                ${activeSection === link ? "lg:border-[#7815ca] border-[#7815ca]" : "border-transparent"}
+                `}>
+              <div>
+                {iconsLinks[link]}
+              </div>
+              <p>
+                {link.charAt(0).toUpperCase() + link.slice(1)}
+              </p>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
