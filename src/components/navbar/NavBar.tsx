@@ -11,9 +11,9 @@ export default function NavBar({ onScroll, activeSection }: NavBarProps) {
 
 
   return (
-    <div className="bg-zinc-900 w-full h-[125px] lg:h-[80px] flex flex-col lg:flex-row items-center justify-between lg:px-[30px] px-[15px] border-b-2 rounded-b-xl border-zinc-600">
+    <div className="font-pixelify-sans bg-zinc-900 w-full h-[125px] lg:h-[80px] flex flex-col lg:flex-row items-center justify-between lg:px-[30px] px-[15px] border-b-2 rounded-b-xl border-zinc-600">
       <div className="flex-row w-full flex items-center justify-between lg:justify-start gap-[20px] py-[10px] lg:py-0 lg:pt-0">
-        <img src="../public/Mikola.png" alt="Mikola" className="w-[60px] h-[60px] rounded-[25px]" />
+        <img src="/Mikola.png" alt="Mikola" className="w-[60px] h-[60px] rounded-[25px]" />
         <p className="text-[24px] lg:text-[28px]">
           João Vitor Viana Chaves
         </p>
@@ -47,10 +47,10 @@ export default function NavBar({ onScroll, activeSection }: NavBarProps) {
                 mb-4
                 ${activeSection === link ? "lg:border-[#7815ca] border-[#7815ca]" : "border-transparent"}
                 `}>
-              <div>
+              <div className={`${activeSection === link ? "text-zinc-400" : "text-white"}`}>
                 {iconsLinks[link]}
               </div>
-              <p>
+              <p className={`${activeSection === link ? "text-zinc-400" : "text-white"}`}>
                 {link.charAt(0).toUpperCase() + link.slice(1)}
               </p>
             </div>

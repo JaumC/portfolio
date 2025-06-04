@@ -22,8 +22,8 @@ export const pagesComponents: Record<Links, JSX.Element> = {
 }
 
 export const iconsLinks: Record<Links, ReactElement> = {
-    home: <FaHome size={18}/>,
-    about: <FaUser size={18}/>,
+    home: <FaHome size={19}/>,
+    about: <FaUser size={16}/>,
     projects: <FaFolderOpen size={18}/>,
-    contact: <FaEnvelope size={18}/>,
+    contact: <FaEnvelope size={16}/>,
 }
