@@ -1,4 +1,4 @@
-import { iconsLinks, type Links } from "../../../Types/Typos";
+import { iconsLinks, type Links } from "../../../types/Typos";
 
 type NavBarProps = {
   onScroll: (id: string) => void;

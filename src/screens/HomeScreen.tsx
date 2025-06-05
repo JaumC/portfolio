@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import FooterBar from "../components/footerbar/FooterBar"
 import NavBar from "../components/navbar/NavBar"
 
-import { pagesComponents, type Links } from "../../Types/Typos";
+import { pagesComponents, type Links } from "../../types/Typos";
 
 export const pages: Links[] = ["home", "about", "projects", "contact"];
 
