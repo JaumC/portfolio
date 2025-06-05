@@ -92,24 +92,25 @@ export default function HomeScreen() {
   }, [])
 
   return (
-    <div className="w-full h-[100svh] flex flex-col">
+    <div className="w-full h-[100dvh] flex flex-col">
       
-      <div className={`fixed top-0 left-0 w-full z-50 transform transition-transform duration-500 ease-in-out ${showNavBar ? "translate-y-0" : "-translate-y-full"}`}>
+      <header className={`sticky top-0 left-0 w-full z-50 transform transition-transform duration-500 ease-in-out ${showNavBar ? "translate-y-0" : "-translate-y-full"}`}>
         <NavBar onScroll={handleScroll} activeSection={activeSection}/>
-      </div>
+      </header>
 
-      <div ref={scrollRef} className="flex-1 overflow-y-scroll snap-y snap-mandatory hide-scrollbar">
+      <main ref={scrollRef} className="flex-1 overflow-y-scroll snap-y snap-mandatory hide-scrollbar">
         {pages.map((page, index) => {
           return (
-            <section key={index} id={page} className="snap-start h-[100svh] scroll-mt-20 flex items-center justify-center">
+            <section key={index} id={page} className="snap-start h-[100dvh] scroll-mt-20 flex items-center justify-center">
               {pagesComponents[page]}
             </section>
           )
         })}
-        <section className="snap-start h-[100svh] scroll-mt-20 flex items-end justify-center">
+
+        <footer className="snap-start h-[100dvh] scroll-mt-20 flex items-end justify-center">
           <FooterBar />
-        </section>
-      </div>
+        </footer>
+      </main>
     </div>
   )
 }
