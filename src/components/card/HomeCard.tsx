@@ -10,7 +10,7 @@ export default function HomeCard() {
         <div className="flex flex-col lg:flex-row justify-center items-center gap-[40px]">
           <div className='flex flex-col lg:items-start items-center'>
             <AnimatedText delay={0.2} duration={2}>JOÃO VITOR VIANA CHAVES</AnimatedText>
-            <AnimatedText delay={0.4} duration={2}>21 Years Old</AnimatedText>
+            <AnimatedText delay={0.4} duration={2}>21 Years</AnimatedText>
 
             <div className='flex hidden lg:block'>
               <AnimatedDiv delay={0.6} duration={2}>
