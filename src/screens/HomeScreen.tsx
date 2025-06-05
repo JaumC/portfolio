@@ -98,16 +98,16 @@ export default function HomeScreen() {
         <NavBar onScroll={handleScroll} activeSection={activeSection}/>
       </header>
 
-      <main ref={scrollRef} className="flex-1 overflow-y-scroll snap-y snap-mandatory hide-scrollbar">
+      <main ref={scrollRef} className="flex-1 overflow-y-scroll h-[100dvh] snap-y snap-mandatory hide-scrollbar">
         {pages.map((page, index) => {
           return (
-            <section key={index} id={page} className="snap-start h-[100dvh] scroll-mt-20 flex items-center justify-center">
+            <section key={index} id={page} className="snap-start h-[100dvh] scroll-mt-[125px] flex items-center justify-center">
               {pagesComponents[page]}
             </section>
           )
         })}
 
-        <footer className="snap-start h-[100dvh] scroll-mt-20 flex items-end justify-center">
+        <footer className="snap-start h-[100dvh] scroll-mt-[125px] flex items-end justify-center">
           <FooterBar />
         </footer>
       </main>
