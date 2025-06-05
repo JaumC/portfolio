@@ -5,7 +5,7 @@ import { AnimatedText } from '../Animation/AnimatedText'
 export default function HomeCard() {
 
   return (
-    <div className=" relative flex w-[90%] lg:w-[45%] h-[500px] rounded-lg border-2 border-[#7815ca]">
+    <div className=" relative pt-8 flex w-[90%] lg:w-[45%] h-[500px] rounded-lg border-2 border-[#7815ca]">
       <div className="p-4 bg-zinc-900 absolute bottom-[5px] left-[5px] w-[100%] h-[500px] rounded-lg flex flex-col justify-center items-center border-t-2 border-r-2 border-zinc-600">
         <div className="flex flex-col lg:flex-row justify-center items-center gap-[40px]">
           <div className='flex flex-col lg:items-start items-center'>
