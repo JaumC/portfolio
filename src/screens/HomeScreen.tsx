@@ -8,15 +8,15 @@ export const pages: Links[] = ["home", "about", "projects", "contact"];
 
 export default function HomeScreen() {
 
-  const [ showNavBar, setShowNavBar ] = useState<boolean>(false)
+  const [showNavBar, setShowNavBar] = useState<boolean>(false)
   const [activeSection, setActiveSection] = useState<string>("home");
 
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const handleScroll = (id: string) => {
     const element = document.getElementById(id)
-    if(element){
-      element.scrollIntoView({ behavior: "smooth"})
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
     }
   }
 
@@ -59,21 +59,21 @@ export default function HomeScreen() {
   }, [])
 
   useEffect(() => {
-  const container = scrollRef.current
-  if (!container) return
+    const container = scrollRef.current
+    if (!container) return
 
-  const onScroll = () => {
-    const scrollTop = container.scrollTop
-    const sectionHeight = window.innerHeight
-    setShowNavBar(scrollTop >= sectionHeight * 0.3)
-  }
+    const onScroll = () => {
+      const scrollTop = container.scrollTop
+      const sectionHeight = window.innerHeight
+      setShowNavBar(scrollTop >= sectionHeight * 0.3)
+    }
 
-  container.addEventListener("scroll", onScroll)
+    container.addEventListener("scroll", onScroll)
 
-  return () => {
-    container.removeEventListener("scroll", onScroll)
-  }
-}, [])
+    return () => {
+      container.removeEventListener("scroll", onScroll)
+    }
+  }, [])
 
 
   useEffect(() => {
@@ -92,25 +92,23 @@ export default function HomeScreen() {
   }, [])
 
   return (
-    <div className="w-full h-[100dvh] flex flex-col">
-      
-      <header className={`sticky top-0 z-50 transition-all duration-500 ${showNavBar ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
-        <NavBar onScroll={handleScroll} activeSection={activeSection}/>
+    <div className="w-full h-[100svh] flex flex-col">
+      <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${showNavBar ? "opacity-100" : "opacity-0"}`}>
+        <NavBar onScroll={handleScroll} activeSection={activeSection} />
       </header>
 
-      <main ref={scrollRef} className="flex-1 overflow-y-scroll h-[100dvh] snap-y snap-mandatory hide-scrollbar">
-        {pages.map((page, index) => {
-          return (
-            <section key={index} id={page} className="snap-start h-[100svh] lg:scroll-mt-[80px] scroll-mt-[125px] flex items-center justify-center">
-              {pagesComponents[page]}
-            </section>
-          )
-        })}
+      <main ref={scrollRef} className="flex-1 overflow-y-scroll h-[100svh] snap-y snap-mandatory hide-scrollbar">
+        {pages.map((page, index) => (
+          <section key={index} id={page} className="snap-start h-[100svh] flex items-center justify-center">
+            {pagesComponents[page]}
+          </section>
+        ))}
 
-        <footer className="snap-start h-[100dvh] scroll-mt-[125px] flex items-end justify-center">
+        <footer className="snap-start h-[100svh] flex items-end justify-center">
           <FooterBar />
         </footer>
       </main>
     </div>
+
   )
 }
