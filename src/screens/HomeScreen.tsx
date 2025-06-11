@@ -12,8 +12,11 @@ export default function HomeScreen() {
 
   const handleScroll = (id: string) => {
     const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+    const container = scrollRef.current
+    if (element && container) {
+      const navHeight = window.innerWidth < 1024 ? 125 : 80 // mobile vs desktop
+      const elementTop = element.offsetTop
+      container.scrollTo({ top: elementTop - navHeight, behavior: "smooth" })
     }
   }
 
@@ -22,15 +25,17 @@ export default function HomeScreen() {
     if (!container) return
 
     const sectionHeight = window.innerHeight
-    const currentScroll = container.scrollTop
+    const navHeight = window.innerWidth < 1024 ? 125 : 80
 
+    const currentScroll = container.scrollTop
     const targetScroll =
       direction === "down"
-        ? currentScroll + sectionHeight
-        : currentScroll - sectionHeight
+        ? currentScroll + sectionHeight - navHeight
+        : currentScroll - sectionHeight + navHeight
 
     container.scrollTo({ top: targetScroll, behavior: "smooth" })
   }
+
 
   useEffect(() => {
     const container = scrollRef.current
@@ -77,12 +82,15 @@ export default function HomeScreen() {
       <main
         ref={scrollRef}
         className="flex-1 h-[100dvh] overflow-y-scroll snap-y snap-mandatory hide-scrollbar scroll-smooth"
+        style={{ scrollPaddingTop: window.innerWidth < 1024 ? '125px' : '80px' }}
       >
+
         {pages.map((page, index) => (
           <section
             key={index}
             id={page}
-            className="snap-start h-[100dvh] flex lg:items-center items-start mt-[20px] lg:mt-[-50px] scroll-mt-[125px] justify-center"
+            className="snap-start h-[100dvh] flex lg:items-center items-start justify-center"
+            style={{ scrollMarginTop: window.innerWidth < 1024 ? '125px' : '80px' }}
           >
             {pagesComponents[page]}
           </section>
