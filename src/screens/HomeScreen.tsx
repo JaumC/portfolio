@@ -82,13 +82,13 @@ export default function HomeScreen() {
           <section
             key={index}
             id={page}
-            className="snap-start h-[100dvh] flex items-center justify-center"
+            className="snap-start h-[100dvh] flex items-center scroll-mt-[125px] justify-center"
           >
             {pagesComponents[page]}
           </section>
         ))}
 
-        <footer className="snap-start h-[100dvh] flex items-end justify-center">
+        <footer className="snap-start h-[100dvh] scroll-mt-[125px] flex items-end justify-center">
           <FooterBar />
         </footer>
       </main>
