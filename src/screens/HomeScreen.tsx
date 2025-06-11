@@ -82,7 +82,7 @@ export default function HomeScreen() {
           <section
             key={index}
             id={page}
-            className="snap-start h-[100dvh] flex items-start mt-4 scroll-mt-[125px] justify-center"
+            className="snap-start h-[100dvh] flex lg:items-center items-start mt-[20px] lg:mt-[-50px] scroll-mt-[125px] justify-center"
           >
             {pagesComponents[page]}
           </section>
