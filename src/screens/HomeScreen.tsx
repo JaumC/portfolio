@@ -6,7 +6,6 @@ import { pagesComponents, type Links } from "../../types/Typos"
 export const pages: Links[] = ["home", "about", "projects", "contact"]
 
 export default function HomeScreen() {
-  const [showNavBar, setShowNavBar] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
 
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -57,20 +56,6 @@ export default function HomeScreen() {
   }, [])
 
   useEffect(() => {
-    const container = scrollRef.current
-    if (!container) return
-
-    const onScroll = () => {
-      const scrollTop = container.scrollTop
-      const sectionHeight = window.innerHeight
-      setShowNavBar(scrollTop >= sectionHeight * 0.3)
-    }
-
-    container.addEventListener("scroll", onScroll)
-    return () => container.removeEventListener("scroll", onScroll)
-  }, [])
-
-  useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowDown") {
         arrowScroll("down")
@@ -85,11 +70,7 @@ export default function HomeScreen() {
 
   return (
     <div className="w-full h-[100svh] flex flex-col">
-      <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          showNavBar ? "opacity-100" : "opacity-0"
-        }`}
-      >
+      <header className='fixed top-0 left-0 w-full z-50 transition-all duration-500'>
         <NavBar onScroll={handleScroll} activeSection={activeSection} />
       </header>
 
@@ -101,7 +82,7 @@ export default function HomeScreen() {
           <section
             key={index}
             id={page}
-            className="snap-start h-[100svh] scroll-mt-[125px] lg:scroll-mt-[80px] flex items-center justify-center"
+            className="snap-start h-[100svh] flex items-center justify-center"
           >
             {pagesComponents[page]}
           </section>
