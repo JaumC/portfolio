@@ -1,15 +1,13 @@
 import { useEffect, useRef, useState } from "react"
 import FooterBar from "../components/footerbar/FooterBar"
 import NavBar from "../components/navbar/NavBar"
+import { pagesComponents, type Links } from "../../types/Typos"
 
-import { pagesComponents, type Links } from "../../types/Typos";
-
-export const pages: Links[] = ["home", "about", "projects", "contact"];
+export const pages: Links[] = ["home", "about", "projects", "contact"]
 
 export default function HomeScreen() {
-
-  const [showNavBar, setShowNavBar] = useState<boolean>(false)
-  const [activeSection, setActiveSection] = useState<string>("home");
+  const [showNavBar, setShowNavBar] = useState(false)
+  const [activeSection, setActiveSection] = useState("home")
 
   const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -32,24 +30,24 @@ export default function HomeScreen() {
         ? currentScroll + sectionHeight
         : currentScroll - sectionHeight
 
-    container.scrollTo({
-      top: targetScroll,
-      behavior: "smooth",
-    })
+    container.scrollTo({ top: targetScroll, behavior: "smooth" })
   }
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section[id]")
+    const container = scrollRef.current
+    if (!container) return
+
+    const sections = container.querySelectorAll("section[id]")
+
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.find((entry) => entry.isIntersecting)
         if (visible) {
-          const id = visible.target.id
-          setActiveSection(id)
+          setActiveSection(visible.target.id)
         }
       },
       {
-        root: scrollRef.current,
+        root: container,
         threshold: 0.5,
       }
     )
@@ -69,12 +67,8 @@ export default function HomeScreen() {
     }
 
     container.addEventListener("scroll", onScroll)
-
-    return () => {
-      container.removeEventListener("scroll", onScroll)
-    }
+    return () => container.removeEventListener("scroll", onScroll)
   }, [])
-
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -86,20 +80,29 @@ export default function HomeScreen() {
     }
 
     window.addEventListener("keydown", handleKeyDown)
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown)
-    }
+    return () => window.removeEventListener("keydown", handleKeyDown)
   }, [])
 
   return (
     <div className="w-full h-[100svh] flex flex-col">
-      <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${showNavBar ? "opacity-100" : "opacity-0"}`}>
+      <header
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+          showNavBar ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <NavBar onScroll={handleScroll} activeSection={activeSection} />
       </header>
 
-      <main ref={scrollRef} className="flex-1 overflow-y-scroll h-[100svh] snap-y snap-mandatory hide-scrollbar">
+      <main
+        ref={scrollRef}
+        className="flex-1 h-[100svh] overflow-y-scroll snap-y snap-mandatory hide-scrollbar scroll-smooth"
+      >
         {pages.map((page, index) => (
-          <section key={index} id={page} className="snap-start h-[100svh] flex items-center justify-center">
+          <section
+            key={index}
+            id={page}
+            className="snap-start h-[100svh] flex items-center justify-center"
+          >
             {pagesComponents[page]}
           </section>
         ))}
@@ -109,6 +112,5 @@ export default function HomeScreen() {
         </footer>
       </main>
     </div>
-
   )
 }
