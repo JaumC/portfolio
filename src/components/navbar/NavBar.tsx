@@ -14,7 +14,7 @@ export default function NavBar({ onScroll, activeSection }: NavBarProps) {
     <div className="font-pixelify-sans bg-transparent w-full h-[125px] lg:h-[80px] flex flex-col lg:flex-row items-center justify-between lg:px-[30px] px-[15px]">
       <div className="flex-row w-full flex items-center justify-between lg:justify-start gap-[20px] py-[10px] lg:py-0 lg:pt-0">
         <img src="/Mikola.png" alt="Mikola" className={`w-[60px] h-[60px] rounded-[25px] duration-300 transition-opacity ${activeSection === "home" ? "opacity-[0]" : "opacity-[1.0]"}`} />
-        <p className={`text-[24px] lg:text-[28px] duration-300 transition-opacity ${activeSection === "home" ? "opacity-[0]" : "opacity-[1.0]"}`}>
+        <p className={`text-[22px] lg:text-[28px] duration-300 transition-opacity ${activeSection === "home" ? "opacity-[0]" : "opacity-[1.0]"}`}>
           João Vitor Viana Chaves
         </p>
       </div>
