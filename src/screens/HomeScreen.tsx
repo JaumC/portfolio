@@ -94,14 +94,14 @@ export default function HomeScreen() {
   return (
     <div className="w-full h-[100dvh] flex flex-col">
       
-      <header className={`sticky top-0 left-0 w-full z-50 transform transition-transform duration-500 ease-in-out ${showNavBar ? "translate-y-0" : "-translate-y-full"}`}>
+      <header className={`sticky top-0 z-50 transition-all duration-500 ${showNavBar ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
         <NavBar onScroll={handleScroll} activeSection={activeSection}/>
       </header>
 
       <main ref={scrollRef} className="flex-1 overflow-y-scroll h-[100dvh] snap-y snap-mandatory hide-scrollbar">
         {pages.map((page, index) => {
           return (
-            <section key={index} id={page} className="snap-start h-[100dvh] scroll-mt-[125px] flex items-center justify-center">
+            <section key={index} id={page} className="snap-start h-[100svh] lg:scroll-mt-[80px] scroll-mt-[125px] flex items-center justify-center">
               {pagesComponents[page]}
             </section>
           )

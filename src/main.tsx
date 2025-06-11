@@ -9,5 +9,5 @@ createRoot(document.getElementById('root')!).render(
     <div className="w-full bg-[url('/fundo.jpg')] h-[100dvh] flex justify-center text-white bg-cover bg-center bg-no-repeat">
       <HomeScreen/>
     </div>
-  </StrictMode>,
+  </StrictMode>
 )
