@@ -81,20 +81,20 @@ export default function HomeScreen() {
 
       <main
         ref={scrollRef}
-        className="flex-1 w-full h-[100dvh] overflow-y-scroll hide-scrollbar"
+        className="flex-1 w-full h-[100dvh] snap-y snap-mandatory overflow-y-scroll hide-scrollbar scroll-smooth"
       >
 
         {pages.map((page, index) => (
           <section
             key={index}
             id={page}
-            className="h-[100dvh] w-full flex lg:items-center items-center justify-center"
+            className="snap-start h-[100dvh] w-full flex lg:items-center items-center justify-center"
           >
             {pagesComponents[page]}
           </section>
         ))}
 
-        <footer className="h-[100dvh] flex items-end justify-center">
+        <footer className="snap-start h-[100dvh] flex items-end justify-center">
           <FooterBar />
         </footer>
       </main>
