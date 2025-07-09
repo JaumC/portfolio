@@ -9,9 +9,11 @@ export const links: Links[] = ["home", "about", "projects", "contact"];
 
 export default function NavBar({ onScroll, activeSection }: NavBarProps) {
 
+  var text_color = activeSection === "contact" || activeSection === "about" ? "text-zinc-300" : "text-zinc-600"
+  var link_color = activeSection === "contact" || activeSection === "about"
 
   return (
-    <div className={`font-pixelify-sans bg-transparent transition-all duration-300 ${activeSection === "home" ? "hidden" : "flex"} w-full h-[125px] lg:h-[80px] flex-col lg:flex-row items-center justify-between lg:px-[30px] px-[15px]`}>
+    <div className={`${link_color ? "text-zinc-600" : "text-zinc-300"} font-pixelify-sans bg-transparent transition-all duration-200 ${activeSection === "home" ? "hidden" : "flex"} w-full h-[125px] lg:h-[80px] flex-col lg:flex-row items-center justify-between lg:px-[30px] px-[15px]`}>
       <div className="flex-row w-full flex items-center justify-between lg:justify-start gap-[20px] py-[10px] lg:py-0 lg:pt-0">
         <img src="/Mikola.png" alt="Mikola" className={`w-[60px] h-[60px] rounded-[25px] duration-300 transition-opacity ${activeSection === "home" ? "opacity-[0]" : "opacity-[1.0]"}`} />
         <p className={`text-[22px] lg:text-[28px] duration-300 transition-opacity ${activeSection === "home" ? "opacity-[0]" : "opacity-[1.0]"}`}>
@@ -38,8 +40,7 @@ export default function NavBar({ onScroll, activeSection }: NavBarProps) {
                 hover:text-gray-400 
                 duration-300 
                 transition-colors 
-                lg:rounded-[20px] 
-                lg:py-[10px] 
+                lg:py-[5px] 
                 lg:px-[15px]
                 lg:border-b-2
                 lg:mb-0 
@@ -47,10 +48,10 @@ export default function NavBar({ onScroll, activeSection }: NavBarProps) {
                 mb-4
                 ${activeSection === link ? "lg:border-[#7815ca] border-[#7815ca]" : "border-transparent"}
                 `}>
-              <div className={`${activeSection === link ? "text-zinc-400" : "text-white"}`}>
+              <div className={`${activeSection === link ? link_color ? "text-zinc-800" : "text-zinc-100" : text_color}`}>
                 {iconsLinks[link]}
               </div>
-              <p className={`${activeSection === link ? "text-zinc-400" : "text-white"}`}>
+              <p className={`${activeSection === link ? link_color ? "text-zinc-800" : "text-zinc-100" : text_color}`}>
                 {link.charAt(0).toUpperCase() + link.slice(1)}
               </p>
             </div>

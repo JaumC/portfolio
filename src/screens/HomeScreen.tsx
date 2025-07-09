@@ -98,7 +98,7 @@ export default function HomeScreen() {
           </div>
         ))}
 
-        <footer className="snap-start h-[100dvh] flex items-end justify-center">
+        <footer className="snap-start h-[100dvh] bg-[#FFF] flex items-end justify-center">
           <FooterBar />
         </footer>
       </main>
