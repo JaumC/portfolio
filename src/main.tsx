@@ -4,10 +4,21 @@ import { createRoot } from 'react-dom/client'
 import { StrictMode } from 'react'
 import './index.css'
 
+// Corrige altura da viewport mobile
+const setVH = () => {
+  const vh = window.innerHeight * 0.01
+  document.documentElement.style.setProperty('--vh', `${vh}px`)
+}
+setVH()
+window.addEventListener('resize', setVH)
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <div className="w-full bg-[url('/fundo.jpg')] h-[100dvh] flex justify-center text-white bg-cover bg-center bg-no-repeat">
-      <HomeScreen/>
+    <div
+      className="w-full bg-[url('/fundo.jpg')] flex justify-center text-white bg-cover bg-center bg-no-repeat"
+      style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
+    >
+      <HomeScreen />
     </div>
   </StrictMode>
 )
