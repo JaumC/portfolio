@@ -75,7 +75,7 @@ export default function HomeScreen() {
 
   return (
     <div className="w-full h-[100dvh] flex flex-col items-center justify-center">
-      <header className='sticky top-0 left-0 w-full z-50 transition-all duration-500'>
+      <header className='fixed top-0 left-0 w-full z-50 transition-all duration-500'>
         <NavBar onScroll={handleScroll} activeSection={activeSection} />
       </header>
 
@@ -88,7 +88,7 @@ export default function HomeScreen() {
           <section
             key={index}
             id={page}
-            className="h-[100dvh] w-full flex lg:items-center items-start justify-center"
+            className="h-[100dvh] w-full flex lg:items-center items-center justify-center"
           >
             {pagesComponents[page]}
           </section>
