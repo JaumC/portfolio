@@ -16,22 +16,27 @@ export default function NavBar({ onScroll, activeSection }: NavBarProps) {
     <div className={`${link_color ? "text-zinc-600" : "text-zinc-300"} font-pixelify-sans bg-transparent transition-all duration-200 ${activeSection === "home" ? "hidden" : "flex"} w-full h-[125px] lg:h-[80px] flex-col lg:flex-row items-center justify-between lg:px-[30px] px-[15px]`}>
       <div className="flex-row w-full flex items-center justify-between lg:justify-start gap-[20px] py-[10px] lg:py-0 lg:pt-0">
         <img src="/Mikola.png" alt="Mikola" className={`w-[60px] h-[60px] rounded-[25px] duration-300 transition-opacity ${activeSection === "home" ? "opacity-[0]" : "opacity-[1.0]"}`} />
-        <p className={`text-[22px] lg:text-[28px] duration-300 transition-opacity ${activeSection === "home" ? "opacity-[0]" : "opacity-[1.0]"}`}>
-          João Vitor Viana Chaves
-        </p>
+        <div className="flex flex-col">
+          <p className={`text-[22px] lg:text-[28px] duration-300 transition-opacity ${activeSection === "home" ? "opacity-[0]" : "opacity-[1.0]"}`}>
+            João Vitor Viana Chaves
+          </p>
+          <p className={`text-[18px] flex lg:self-start self-end duration-300 transition-opacity ${activeSection === "home" ? "opacity-[0]" : "opacity-[1.0]"}`}>
+           Fullstack Developer
+          </p>
+        </div>
       </div>
 
-      <hr className={`w-full border-[1px] rounded-2xl border-zinc-700 lg:hidden ${activeSection === "home" ? "hidden" : "block"}`}/>
+      <hr className={`w-full rounded-2xl border-[${text_color}] lg:hidden ${activeSection === "home" ? "hidden" : "block"}`} />
 
       <div className={`flex lg:gap-[70px] lg:justify-end lg:w-[50%] py-[10px] lg:py-0 justify-between w-full ${activeSection === "home" ? "hidden" : "block"}`}>
         {links.map((link, index) => {
           return (
             <div
-            key={index}
-            onClick={() => {
-              onScroll(link);
-            }}
-            className={`
+              key={index}
+              onClick={() => {
+                onScroll(link);
+              }}
+              className={`
                 cursor-pointer 
                 flex 
                 items-center 
