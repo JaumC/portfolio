@@ -74,29 +74,27 @@ export default function HomeScreen() {
   }, [])
 
   return (
-    <div className="w-full h-[100dvh] flex flex-col">
+    <div className="w-full h-[100dvh] flex flex-col items-center justify-center">
       <header className='sticky top-0 left-0 w-full z-50 transition-all duration-500'>
         <NavBar onScroll={handleScroll} activeSection={activeSection} />
       </header>
 
       <main
         ref={scrollRef}
-        className="flex-1 h-[100dvh] overflow-y-scroll hide-scrollbar scroll-smooth"
-        style={{ scrollPaddingTop: window.innerWidth < 1024 ? '125px' : '80px' }}
+        className="flex-1 w-full h-[100dvh] overflow-y-scroll hide-scrollbar"
       >
 
         {pages.map((page, index) => (
           <section
             key={index}
             id={page}
-            className="h-[100dvh] flex lg:items-center items-start justify-center"
-            style={{ scrollMarginTop: window.innerWidth < 1024 ? '125px' : '80px' }}
+            className="h-[100dvh] w-full flex lg:items-center items-start justify-center"
           >
             {pagesComponents[page]}
           </section>
         ))}
 
-        <footer className="h-[100dvh] scroll-mt-[125px] flex items-end justify-center">
+        <footer className="h-[100dvh] flex items-end justify-center">
           <FooterBar />
         </footer>
       </main>
