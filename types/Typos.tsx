@@ -27,3 +27,10 @@ export const iconsLinks: Record<Links, ReactElement> = {
     projects: <FaFolderOpen size={18}/>,
     contact: <FaEnvelope size={16}/>,
 }
+
+export const pages: { id: Links; bg: string }[] = [
+  { id: "home", bg: "#121317" },
+  { id: "about", bg: "#ffffff" },
+  { id: "projects", bg: "#121317" },
+  { id: "contact", bg: "#ffffff" },
+]

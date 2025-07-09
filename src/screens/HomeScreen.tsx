@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import FooterBar from "../components/footerbar/FooterBar"
 import NavBar from "../components/navbar/NavBar"
-import { pagesComponents, type Links } from "../../types/Typos"
-
-export const pages: Links[] = ["home", "about", "projects", "contact"]
+import { pages, pagesComponents } from "../../types/Typos"
+import GradientDivider from "../components/GradientDivider/GradientDivider"
 
 export default function HomeScreen() {
   const [activeSection, setActiveSection] = useState("home")
@@ -14,7 +13,7 @@ export default function HomeScreen() {
     const element = document.getElementById(id)
     const container = scrollRef.current
     if (element && container) {
-      const navHeight = window.innerWidth < 1024 ? 125 : 80 // mobile vs desktop
+      const navHeight = window.innerWidth < 1024 ? 125 : 80 
       const elementTop = element.offsetTop
       container.scrollTo({ top: elementTop - navHeight, behavior: "smooth" })
     }
@@ -52,7 +51,7 @@ export default function HomeScreen() {
       },
       {
         root: container,
-        threshold: 0.5,
+        threshold: 0.9,
       }
     )
 
@@ -83,15 +82,20 @@ export default function HomeScreen() {
         ref={scrollRef}
         className="flex-1 w-full h-[100dvh] snap-y snap-mandatory overflow-y-scroll hide-scrollbar scroll-smooth"
       >
-
         {pages.map((page, index) => (
+          <div key={page.id}>
+
           <section
-            key={index}
-            id={page}
+            id={page.id}
             className="snap-start h-[100dvh] w-full flex lg:items-center items-center justify-center"
-          >
-            {pagesComponents[page]}
+            style={{ backgroundColor: page.bg }}
+            >
+            {pagesComponents[page.id]}
           </section>
+          {index < pages.length - 1 && (
+            <GradientDivider from={page.bg} to={pages[index + 1].bg} />
+          )}
+          </div>
         ))}
 
         <footer className="snap-start h-[100dvh] flex items-end justify-center">

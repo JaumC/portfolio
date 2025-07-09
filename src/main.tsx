@@ -15,7 +15,7 @@ window.addEventListener('resize', setVH)
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <div
-      className="w-full bg-[url('/fundo.jpg')] flex justify-center text-white bg-cover bg-center bg-no-repeat"
+      className="w-full bg-[#121317] flex justify-center text-white"
       style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
     >
       <HomeScreen />

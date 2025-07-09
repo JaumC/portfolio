@@ -1,6 +1,8 @@
 
 export default function AboutScreen() {
   return (
-    <div>AboutScreen</div>
+    <div className="w-full h-screen bg-[#FFF]">
+      
+    </div>
   )
 }
