@@ -81,7 +81,7 @@ export default function HomeScreen() {
 
       <main
         ref={scrollRef}
-        className="flex-1 h-[100dvh] overflow-y-scroll snap-y snap-mandatory hide-scrollbar scroll-smooth"
+        className="flex-1 h-[100dvh] overflow-y-scroll hide-scrollbar scroll-smooth"
         style={{ scrollPaddingTop: window.innerWidth < 1024 ? '125px' : '80px' }}
       >
 
@@ -89,14 +89,14 @@ export default function HomeScreen() {
           <section
             key={index}
             id={page}
-            className="snap-start h-[100dvh] flex lg:items-center items-start justify-center"
+            className="h-[100dvh] flex lg:items-center items-start justify-center"
             style={{ scrollMarginTop: window.innerWidth < 1024 ? '125px' : '80px' }}
           >
             {pagesComponents[page]}
           </section>
         ))}
 
-        <footer className="snap-start h-[100dvh] scroll-mt-[125px] flex items-end justify-center">
+        <footer className="h-[100dvh] scroll-mt-[125px] flex items-end justify-center">
           <FooterBar />
         </footer>
       </main>
