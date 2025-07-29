@@ -44,14 +44,17 @@ export default function HomeScreen() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries.find((entry) => entry.isIntersecting)
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.intersectionRatio - b.intersectionRatio)[0]
         if (visible) {
           setActiveSection(visible.target.id)
         }
       },
       {
         root: container,
-        threshold: 0.9,
+        threshold: [0.3, 0.5, 0.7, 0.9],
+        rootMargin: "-80px 0px 0px 0px"
       }
     )
 
