@@ -1,4 +1,5 @@
 import { FaGithub } from 'react-icons/fa'
+import { TbBrandLinkedinFilled } from "react-icons/tb";
 import { AnimatedDiv } from '../Animation/AnimatedDiv'
 import { AnimatedText } from '../Animation/AnimatedText'
 
@@ -15,23 +16,37 @@ export default function HomeCard() {
 
             <div className='flex hidden lg:block'>
               <AnimatedDiv delay={0.6} duration={2}>
-                <a rel="stylesheet" href="https://github.com/JaumC">
-                  <FaGithub size={60} className='hover:text-zinc-400 duration-300 transform transition-color text-[#7815ca]'/>
+                <a rel="stylesheet" href="https://github.com/JaumC" target="_blank">
+                  <FaGithub size={60} className='hover:text-zinc-400 duration-300 transform transition-color text-[#7815ca]' />
+                </a>
+              </AnimatedDiv>
+            </div>
+
+            <div className='flex hidden lg:block'>
+              <AnimatedDiv delay={0.6} duration={2}>
+                <a rel="stylesheet" href="https://www.linkedin.com/in/jvvc/" target="_blank">
+                  <TbBrandLinkedinFilled size={60} className='hover:text-zinc-400 duration-300 transform transition-color text-blue-500' />
                 </a>
               </AnimatedDiv>
             </div>
 
           </div>
           <AnimatedDiv delay={0.8} duration={1}>
-            <img src="/Mikola.png" alt="Mikola" className="lg:w-[300px] w-[200px] rounded-full lg:p-2 p-1 lg:border-4 border-2 border-[#7815ca]" />
+            <img src="/MeSquare.jpg" alt="Mikola" className="lg:w-[300px] w-[200px] rounded-full lg:p-2 p-1 lg:border-4 border-2 border-[#7815ca]" />
           </AnimatedDiv>
-          <div className='flex lg:hidden'>
-              <AnimatedDiv delay={0.6} duration={2}>
-                <a rel="stylesheet" href="https://github.com/JaumC" target="_blank">
-                  <FaGithub size={60} className='hover:text-zinc-400 duration-300 transform transition-color text-[#7815ca]'/>
-                </a>
-              </AnimatedDiv>
-            </div>
+          <div className='flex lg:hidden gap-4'>
+            <AnimatedDiv delay={0.6} duration={2}>
+              <a rel="stylesheet" href="https://github.com/JaumC" target="_blank">
+                <FaGithub size={60} className='hover:text-zinc-400 duration-300 transform transition-color text-[#7815ca]' />
+              </a>
+            </AnimatedDiv>
+
+            <AnimatedDiv delay={0.6} duration={2}>
+              <a rel="stylesheet" href="https://www.linkedin.com/in/jvvc/" target="_blank">
+                <TbBrandLinkedinFilled size={60} className='hover:text-zinc-400 duration-300 transform transition-color text-blue-500' />
+              </a>
+            </AnimatedDiv>
+          </div>
         </div>
       </div>
     </div>
