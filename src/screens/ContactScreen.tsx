@@ -1,6 +1,6 @@
 
 export default function ContactScreen() {
   return (
-    <div>ContactScreen</div>
+    <div className="text-black">ContactScreen</div>
   )
 }

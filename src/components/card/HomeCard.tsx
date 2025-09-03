@@ -14,20 +14,22 @@ export default function HomeCard() {
             <AnimatedText delay={0.4} duration={2}>FULLSTACK DEVELOPER</AnimatedText>
             <AnimatedText delay={0.6} duration={2}>21 Years</AnimatedText>
 
-            <div className='flex hidden lg:block'>
-              <AnimatedDiv delay={0.6} duration={2}>
-                <a rel="stylesheet" href="https://github.com/JaumC" target="_blank">
-                  <FaGithub size={60} className='hover:text-zinc-400 duration-300 transform transition-color text-[#7815ca]' />
-                </a>
-              </AnimatedDiv>
-            </div>
+            <div className='flex gap-5'>
+              <div className='flex hidden lg:flex'>
+                <AnimatedDiv delay={0.6} duration={2}>
+                  <a rel="stylesheet" href="https://github.com/JaumC" target="_blank">
+                    <FaGithub size={60} className='hover:text-zinc-400 duration-300 transform transition-color text-[#7815ca]' />
+                  </a>
+                </AnimatedDiv>
+              </div>
 
-            <div className='flex hidden lg:block'>
-              <AnimatedDiv delay={0.6} duration={2}>
-                <a rel="stylesheet" href="https://www.linkedin.com/in/jvvc/" target="_blank">
-                  <TbBrandLinkedinFilled size={60} className='hover:text-zinc-400 duration-300 transform transition-color text-blue-500' />
-                </a>
-              </AnimatedDiv>
+              <div className='flex hidden lg:flex'>
+                <AnimatedDiv delay={0.6} duration={2}>
+                  <a rel="stylesheet" href="https://www.linkedin.com/in/jvvc/" target="_blank">
+                    <TbBrandLinkedinFilled size={60} className='hover:text-zinc-400 duration-300 transform transition-color text-blue-500' />
+                  </a>
+                </AnimatedDiv>
+              </div>
             </div>
 
           </div>
