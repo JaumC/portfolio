@@ -10,6 +10,7 @@ import {
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { FcEngineering } from "react-icons/fc";
 
 function cn(...inputs: ClassValue[]) { return twMerge(clsx(inputs)) }
 
@@ -67,10 +68,16 @@ export const BentoGridItem = ({
 };
 
 const Skeleton = () => (
-  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl   dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black"></div>
+  <div className="flex flex-1 h-full min-h-[6rem] rounded-xl dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)] border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black"></div>
 );
 
-const items_1 = [
+function chunkArray<T>(arr: T[], size: number): T[][] {
+  return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
+    arr.slice(i * size, i * size + size)
+  );
+}
+
+const projetos = [
   {
     title: "The Dawn of Innovation",
     description: "Explore the birth of groundbreaking ideas and inventions.",
@@ -83,6 +90,34 @@ const items_1 = [
     description: "Dive into the transformative power of technology.",
     header: <Skeleton />,
     className: "md:col-span-1",
+    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+  },
+  {
+    title: "The Digital Revolution",
+    description: "Dive into the transformative power of technology.",
+    header: <Skeleton />,
+    className: "md:col-span-1",
+    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+  },
+  {
+    title: "The Digital Revolution",
+    description: "Dive into the transformative power of technology.",
+    header: <Skeleton />,
+    className: "md:col-span-2",
+    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+  },
+  {
+    title: "The Digital Revolution",
+    description: "Dive into the transformative power of technology.",
+    header: <Skeleton />,
+    className: "md:col-span-1",
+    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+  },
+  {
+    title: "The Digital Revolution",
+    description: "Dive into the transformative power of technology.",
+    header: <Skeleton />,
+    className: "md:col-span-2",
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
   },
   {
@@ -102,42 +137,44 @@ const items_1 = [
   },
 ];
 
-const items_2 = [
-  {
-    title: "The Dawn of Innovation",
-    description: "Explore the birth of groundbreaking ideas and inventions.",
-    header: <Skeleton />,
-    className: "md:col-span-2",
-    icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Digital Revolution",
-    description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
-    className: "md:col-span-1",
-    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
-  },
-];
-
 export default function ProjectScreen() {
   const [page, setPage] = useState<number>(0);
   const [direction, setDirection] = useState<number>(0);
 
-  const pages = [
-    <BentoGrid className="max-w-4xl mx-auto md:auto-rows-[20rem]">
-      {items_1.map((item, i) => (
+  const chunkedConsoleItems = chunkArray(projetos, 4)
+  const chunkedPhoneItems = chunkArray(projetos, 2)
+
+  const consolePages = chunkedConsoleItems.map((chunk, index) => (
+    <BentoGrid key={index} className="max-w-4xl mx-auto md:auto-rows-[20rem]">
+      {chunk.map((item, i) => (
         <BentoGridItem key={i} {...item} />
       ))}
-    </BentoGrid>,
-    <BentoGrid className="max-w-4xl mx-auto md:auto-rows-[20rem]">
-      {items_2.map((item, i) => (
-        <BentoGridItem key={i} {...item} />
-      ))}
-    </BentoGrid>,
-    <div className="max-w-4xl mx-auto md:auto-rows-[20rem] flex items-center justify-center text-xl font-semibold">
-      Projetos em construção.
+    </BentoGrid>
+  ))
+  consolePages.push(
+    <div className="max-w-4xl mx-auto md:auto-rows-[20rem] flex items-center justify-center text-xl font-semibold flex-col gap-20">
+      <p>
+        Projetos em construção.
+      </p>
+      <FcEngineering className="animate-[spin_3s_linear_infinite]" size={80} />
     </div>
-  ];
+  )
+
+  const cellphonePages = chunkedPhoneItems.map((chunk, index) => (
+    <BentoGrid key={index} className="max-w-4xl mx-auto md:auto-rows-[20rem]">
+      {chunk.map((item, i) => (
+        <BentoGridItem key={i} {...item} />
+      ))}
+    </BentoGrid>
+  ))
+  cellphonePages.push(
+    <div className="max-w-4xl mx-auto md:auto-rows-[20rem] flex items-center justify-center text-xl font-semibold flex-col gap-20">
+      <p>
+        Projetos em construção.
+      </p>
+      <FcEngineering className="animate-[spin_3s_linear_infinite]" size={80} />
+    </div>
+  )
 
   const variants = {
     enter: (dir: number) => ({
@@ -159,48 +196,95 @@ export default function ProjectScreen() {
 
 
   return (
-    <div className="h-[85%] w-[85%] overflow-hidden relative">
-      <div className="flex relative h-full mt-8">
-        {/* Botão Esquerda */}
-        <div className="absolute left-4 h-full my-auto flex items-center transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
-          {page != 0 && (
-            <MdArrowBackIosNew
-              size={22}
-              onClick={() => {
-                setDirection(-1);
-                setPage((prev) => prev - 1);
-              }}
-            />
-          )}
-        </div>
+    <>
+      {/*PARTE DO DESKTOP*/}
+      <div className="hidden lg:block h-[90%] w-[85%] overflow-hidden relative">
+        <div className="flex relative h-full mt-15">
+          <div className="absolute left-4 h-full my-auto flex items-center transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
+            {page != 0 && (
+              <MdArrowBackIosNew
+                size={22}
+                onClick={() => {
+                  setDirection(-1);
+                  setPage((prev) => prev - 1);
+                }}
+              />
+            )}
+          </div>
 
-        <AnimatePresence initial={false} custom={direction} mode="wait">
-          <motion.div
-            key={page}
-            custom={direction}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.45, ease: "easeInOut" }}
-            className="absolute w-full h-full"
-          >
-            {pages[page]}
-          </motion.div>
-        </AnimatePresence>
+          <AnimatePresence initial={false} custom={direction} mode="wait">
+            <motion.div
+              key={page}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.45, ease: "easeInOut" }}
+              className="absolute w-full h-full"
+            >
+              {consolePages[page]}
+            </motion.div>
+          </AnimatePresence>
 
-        <div className="absolute right-4 h-full my-auto flex items-center transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
-          {page <= 1 && (
-            <MdArrowForwardIos
-              size={22}
-              onClick={() => {
-                setDirection(1);
-                setPage((prev) => prev + 1);
-              }}
-            />
-          )}
+          <div className="absolute right-4 h-full my-auto flex items-center transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
+            {page < (consolePages.length - 1) && (
+              <MdArrowForwardIos
+                size={22}
+                onClick={() => {
+                  setDirection(1);
+                  setPage((prev) => prev + 1);
+                }}
+              />
+            )}
+          </div>
         </div>
       </div>
-    </div>
+
+      {/*PARTE DO CELULAR*/}
+      <div className="lg:hidden h-[90%] w-[85%] overflow-hidden relative">
+        <div className="mt-30">
+          <AnimatePresence initial={false} custom={direction} mode="wait">
+            <motion.div
+              key={page}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.45, ease: "easeInOut" }}
+              className="absolute w-full h-full"
+            >
+              {cellphonePages[page]}
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="bg-red-300 flex absolute bottom-8 w-full">
+            <div className="h-full my-auto absolute left-0 flex items-center transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
+              {page != 0 && (
+                <MdArrowBackIosNew
+                  size={22}
+                  onClick={() => {
+                    setDirection(-1);
+                    setPage((prev) => prev - 1);
+                  }}
+                />
+              )}
+            </div>
+            <div className="h-full my-auto absolute right-0 flex items-center transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
+              {page < (cellphonePages.length - 1) && (
+                <MdArrowForwardIos
+                  size={22}
+                  onClick={() => {
+                    setDirection(1);
+                    setPage((prev) => prev + 1);
+                  }}
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
