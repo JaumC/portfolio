@@ -22,15 +22,15 @@ export const BentoGrid = ({
 export const BentoGridItem = ({
   className,
   title,
-  description,
+  short_description,
   header,
   icon,
   onPress,
 }: {
   className?: string;
   title?: string | React.ReactNode;
-  description?: string | React.ReactNode;
-  header?: React.ReactNode;
+  short_description?: string | React.ReactNode;
+  header?: string | React.ReactNode;
   icon?: React.ReactNode;
   onPress?: () => void;
 }) => {
@@ -42,14 +42,20 @@ export const BentoGridItem = ({
         className,
       )}
     >
-      {header}
+      <div className="rounded-lg">
+        {typeof header === "string" ? (
+          <img src={header} alt={header.replace("/", "")} />
+        ) : (
+          header
+        )}
+      </div>
       <div className="transition duration-200 group-hover/bento:translate-x-2">
         {icon}
         <div className="mt-2 mb-2 font-sans font-bold text-neutral-600 dark:text-neutral-200">
           {title}
         </div>
         <div className="font-sans text-xs font-normal text-neutral-600 dark:text-neutral-300">
-          {description}
+          {short_description}
         </div>
       </div>
     </div>

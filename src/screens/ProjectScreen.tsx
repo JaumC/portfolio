@@ -1,17 +1,10 @@
-import {
-  IconClipboardCopy,
-  IconFileBroken,
-  IconSignature,
-  IconTableColumn,
-} from "@tabler/icons-react";
-
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FcEngineering } from "react-icons/fc";
 import { ModalBody, ModalContent, useModal } from "../components/ui/animated-modal";
 import { BentoGrid, BentoGridItem } from "../components/ui/bento-grid";
-import { Skeleton } from "../components/skeleton/Skeleton";
+import { projects } from "../utils/projects";
 
 function chunkArray<T>(arr: T[], size: number): T[][] {
   return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
@@ -19,73 +12,13 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
   );
 }
 
-const projetos = [
-  {
-    title: "The Dawn of Innovation",
-    description: "Explore the birth of groundbreaking ideas and inventions.",
-    header: <Skeleton />,
-    className: "md:col-span-2",
-    icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Digital Revolution",
-    description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
-    className: "md:col-span-1",
-    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Digital Revolution",
-    description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
-    className: "md:col-span-1",
-    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Digital Revolution",
-    description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
-    className: "md:col-span-2",
-    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Digital Revolution",
-    description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
-    className: "md:col-span-1",
-    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Digital Revolution",
-    description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
-    className: "md:col-span-2",
-    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Art of Design",
-    description: "Discover the beauty of thoughtful and functional design.",
-    header: <Skeleton />,
-    className: "md:col-span-1",
-    icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Power of Communication",
-    description:
-      "Understand the impact of effective communication in our lives.",
-    header: <Skeleton />,
-    className: "md:col-span-2",
-    icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
-  },
-];
-
 export default function ProjectScreen() {
   const [page, setPage] = useState<number>(0);
   const [direction, setDirection] = useState<number>(0);
 
-  const chunkedConsoleItems = chunkArray(projetos, 4)
-  const chunkedPhoneItems = chunkArray(projetos, 2)
-  const [selectedProject, setSelectedProject] = useState<typeof projetos[0] | null>(null);
+  const chunkedConsoleItems = chunkArray(projects, 4)
+  const chunkedPhoneItems = chunkArray(projects, 2)
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
   const { setOpen } = useModal()
 
@@ -240,8 +173,9 @@ export default function ProjectScreen() {
           </div>
         </div>
       </div>
-      <ModalBody className="bg-black border-1 border-white lg:w-full w-[5%]">
+      <ModalBody className="bg-black rounded-[25px] max-w-[95%] border-2 border-white lg:w-full w-[5%]">
         <ModalContent>
+          <h2 className="text-xl font-bold">{selectedProject?.icon}</h2>
           <h2 className="text-xl font-bold">{selectedProject?.title}</h2>
           <p>{selectedProject?.description}</p>
         </ModalContent>

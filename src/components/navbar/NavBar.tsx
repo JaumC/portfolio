@@ -37,30 +37,46 @@ export default function NavBar({ onScroll, activeSection }: NavBarProps) {
                 onScroll(link);
               }}
               className={`
-                cursor-pointer 
-                flex 
-                items-center 
-                justify-center
-                gap-[5px]
-                hover:text-gray-400 
-                duration-300 
-                transition-colors 
-                lg:py-[5px] 
-                lg:px-[15px]
-                lg:border-b-2
-                lg:mb-0 
-                border-b-2
-                mb-4
-                ${activeSection === link ? "lg:border-[#7815ca] border-[#7815ca]" : "border-transparent"}
-                `}>
-              <div className={`select-none ${activeSection === link ? link_color ? "text-zinc-800" : "text-zinc-100" : text_color}`}>
+        cursor-pointer 
+        flex 
+        items-center 
+        justify-center
+        gap-[5px]
+        hover:text-gray-400 
+        duration-300 
+        transition-colors 
+        lg:py-[5px] 
+        lg:px-[15px]
+        lg:border-b-2
+        lg:mb-0 
+        border-b-2
+        mb-4
+        select-none
+        ${activeSection === link ? "lg:border-[#7815ca] border-[#7815ca]" : "border-transparent"}
+      `}
+            >
+              <div
+                className={`${activeSection === link
+                    ? link_color
+                      ? "text-zinc-800"
+                      : "text-zinc-100"
+                    : text_color
+                  }`}
+              >
                 {iconsLinks[link]}
               </div>
-              <p className={`${activeSection === link ? link_color ? "text-zinc-800" : "text-zinc-100" : text_color}`}>
+              <p
+                className={`${activeSection === link
+                    ? link_color
+                      ? "text-zinc-800"
+                      : "text-zinc-100"
+                    : text_color
+                  }`}
+              >
                 {link.charAt(0).toUpperCase() + link.slice(1)}
               </p>
             </div>
-          )
+          );
         })}
       </div>
     </div>
