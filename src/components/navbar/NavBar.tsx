@@ -21,7 +21,7 @@ export default function NavBar({ onScroll, activeSection }: NavBarProps) {
             João Vitor Viana Chaves
           </p>
           <p className={`text-[18px] flex lg:self-start self-end duration-300 transition-opacity ${activeSection === "home" ? "opacity-[0]" : "opacity-[1.0]"}`}>
-           Fullstack Developer
+            Fullstack Developer
           </p>
         </div>
       </div>
@@ -53,7 +53,7 @@ export default function NavBar({ onScroll, activeSection }: NavBarProps) {
                 mb-4
                 ${activeSection === link ? "lg:border-[#7815ca] border-[#7815ca]" : "border-transparent"}
                 `}>
-              <div className={`${activeSection === link ? link_color ? "text-zinc-800" : "text-zinc-100" : text_color}`}>
+              <div className={`select-none ${activeSection === link ? link_color ? "text-zinc-800" : "text-zinc-100" : text_color}`}>
                 {iconsLinks[link]}
               </div>
               <p className={`${activeSection === link ? link_color ? "text-zinc-800" : "text-zinc-100" : text_color}`}>
