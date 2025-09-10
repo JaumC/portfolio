@@ -9,7 +9,7 @@ import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FcEngineering } from "react-icons/fc";
-import { Modal, ModalBody, ModalContent, ModalProvider, useModal } from "../components/ui/animated-modal";
+import { ModalBody, ModalContent, useModal } from "../components/ui/animated-modal";
 import { BentoGrid, BentoGridItem } from "../components/ui/bento-grid";
 import { Skeleton } from "../components/skeleton/Skeleton";
 
