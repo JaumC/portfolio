@@ -3,6 +3,7 @@ import HomeScreen from './screens/HomeScreen.tsx'
 import { createRoot } from 'react-dom/client'
 import { StrictMode } from 'react'
 import './index.css'
+import { ModalProvider } from './components/ui/animated-modal.tsx'
 
 // Corrige altura da viewport mobile
 const setVH = () => {
@@ -14,11 +15,13 @@ window.addEventListener('resize', setVH)
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <div
-      className="w-full bg-[#121317] flex justify-center text-white"
-      style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
-    >
-      <HomeScreen />
-    </div>
+    <ModalProvider>
+      <div
+        className="w-full bg-[#121317] flex justify-center text-white"
+        style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
+      >
+        <HomeScreen />
+      </div>
+    </ModalProvider>
   </StrictMode>
 )

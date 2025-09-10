@@ -1,7 +1,7 @@
 import { FaGithub } from 'react-icons/fa'
 import { TbBrandLinkedinFilled } from "react-icons/tb";
-import { AnimatedDiv } from '../Animation/AnimatedDiv'
-import { AnimatedText } from '../Animation/AnimatedText'
+import { AnimatedDiv } from '../animation/AnimatedDiv'
+import { AnimatedText } from '../animation/AnimatedText'
 
 export default function HomeCard() {
 

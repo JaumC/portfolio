@@ -1,75 +1,17 @@
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-
 import {
   IconClipboardCopy,
   IconFileBroken,
   IconSignature,
   IconTableColumn,
 } from "@tabler/icons-react";
+
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FcEngineering } from "react-icons/fc";
-
-function cn(...inputs: ClassValue[]) { return twMerge(clsx(inputs)) }
-
-export const BentoGrid = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children?: React.ReactNode;
-}) => {
-  return (
-    <div
-      className={cn(
-        "mx-auto grid w-full grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-3",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-};
-
-export const BentoGridItem = ({
-  className,
-  title,
-  description,
-  header,
-  icon,
-}: {
-  className?: string;
-  title?: string | React.ReactNode;
-  description?: string | React.ReactNode;
-  header?: React.ReactNode;
-  icon?: React.ReactNode;
-}) => {
-  return (
-    <div
-      className={cn(
-        "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-neutral-200 bg-white p-4 transition duration-200 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:shadow-none",
-        className,
-      )}
-    >
-      {header}
-      <div className="transition duration-200 group-hover/bento:translate-x-2">
-        {icon}
-        <div className="mt-2 mb-2 font-sans font-bold text-neutral-600 dark:text-neutral-200">
-          {title}
-        </div>
-        <div className="font-sans text-xs font-normal text-neutral-600 dark:text-neutral-300">
-          {description}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Skeleton = () => (
-  <div className="flex flex-1 h-full min-h-[6rem] rounded-xl dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)] border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black"></div>
-);
+import { Modal, ModalBody, ModalContent, ModalProvider, useModal } from "../components/ui/animated-modal";
+import { BentoGrid, BentoGridItem } from "../components/ui/bento-grid";
+import { Skeleton } from "../components/skeleton/Skeleton";
 
 function chunkArray<T>(arr: T[], size: number): T[][] {
   return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
@@ -143,14 +85,23 @@ export default function ProjectScreen() {
 
   const chunkedConsoleItems = chunkArray(projetos, 4)
   const chunkedPhoneItems = chunkArray(projetos, 2)
+  const [selectedProject, setSelectedProject] = useState<typeof projetos[0] | null>(null);
+
+  const { setOpen } = useModal()
 
   const consolePages = chunkedConsoleItems.map((chunk, index) => (
     <BentoGrid key={index} className="max-w-4xl mx-auto md:auto-rows-[20rem]">
       {chunk.map((item, i) => (
-        <BentoGridItem key={i} {...item} />
+        <BentoGridItem key={i} {...item} onPress={
+          () => {
+            setSelectedProject(item);
+            setOpen(true);
+          }
+        } />
       ))}
     </BentoGrid>
   ))
+
   consolePages.push(
     <div className="max-w-4xl mx-auto md:auto-rows-[20rem] flex items-center justify-center text-xl font-semibold flex-col gap-20">
       <p>
@@ -163,7 +114,12 @@ export default function ProjectScreen() {
   const cellphonePages = chunkedPhoneItems.map((chunk, index) => (
     <BentoGrid key={index} className="max-w-4xl mx-auto md:auto-rows-[20rem]">
       {chunk.map((item, i) => (
-        <BentoGridItem key={i} {...item} />
+        <BentoGridItem key={i} {...item} onPress={
+          () => {
+            setSelectedProject(item);
+            setOpen(true);
+          }
+        } />
       ))}
     </BentoGrid>
   ))
@@ -193,7 +149,6 @@ export default function ProjectScreen() {
       position: "absolute",
     }),
   };
-
 
   return (
     <>
@@ -285,6 +240,12 @@ export default function ProjectScreen() {
           </div>
         </div>
       </div>
+      <ModalBody className="bg-black border-1 border-white lg:w-full w-[5%]">
+        <ModalContent>
+          <h2 className="text-xl font-bold">{selectedProject?.title}</h2>
+          <p>{selectedProject?.description}</p>
+        </ModalContent>
+      </ModalBody>
     </>
   );
 }
