@@ -10,7 +10,7 @@ export const BentoGrid = ({
   return (
     <div
       className={cn(
-        "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-3",
+        "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[20px] md:grid-cols-3",
         className,
       )}
     >
@@ -24,6 +24,7 @@ export const BentoGridItem = ({
   title,
   short_description,
   header,
+  stacks,
   icon,
   onPress,
 }: {
@@ -31,6 +32,7 @@ export const BentoGridItem = ({
   title?: string | React.ReactNode;
   short_description?: string | React.ReactNode;
   header?: string | React.ReactNode;
+  stacks?: string[];
   icon?: React.ReactNode;
   onPress?: () => void;
 }) => {
@@ -38,23 +40,46 @@ export const BentoGridItem = ({
     <div
       onClick={onPress}
       className={cn(
-        "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-neutral-200 bg-white p-4 transition duration-200 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:shadow-none",
+        "group/bento bg-zinc-800/70 shadow-input row-span-14 lg:row-span-8 flex flex-col justify-between space-y-4 rounded-xl p-4 transition duration-200",
         className,
       )}
     >
-      <div className="rounded-lg">
+      <div className="rounded-lg p-2 bg-neutral-200">
         {typeof header === "string" ? (
-          <img src={header} alt={header.replace("/", "")} />
+          <img className="rounded" src={header} alt={header.replace("/", "")} />
         ) : (
           header
         )}
       </div>
-      <div className="transition duration-200 group-hover/bento:translate-x-2">
-        {icon}
-        <div className="mt-2 mb-2 font-sans font-bold text-neutral-600 dark:text-neutral-200">
-          {title}
+      <div className="text-zinc-200 transition duration-200 group-hover/bento:translate-x-2">
+        <div className="text-zinc-200 transition duration-200 group-hover/bento:translate-x-2">
+          <div className="flex gap-3">
+            {stacks?.map((stack, index) => {
+              const [src, width] = stack.split(" ");
+              return (
+                <div
+                  key={index}
+                  className="w-[60px] h-[60px] relative border-2 border-[#363749] rounded-full bg-gradient-to-r from-zinc-900 to-[#0C0E23] flex items-center justify-center"
+                >
+                  <img
+                    src={src}
+                    alt={src.replace("/", "")}
+                    style={{ width: width }}
+                    className="absolute"
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className="font-sans text-xs font-normal text-neutral-600 dark:text-neutral-300">
+
+        <div className="flex items-center gap-3">
+          {icon}
+          <div className="mt-2 mb-2 font-pixelify-sans font-bold">
+            {title}
+          </div>
+        </div>
+        <div className="font-sans text-xs font-normal">
           {short_description}
         </div>
       </div>

@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FcEngineering } from "react-icons/fc";
 import { ModalBody, ModalContent, useModal } from "../components/ui/animated-modal";
 import { BentoGrid, BentoGridItem } from "../components/ui/bento-grid";
-import { projects } from "../utils/projects";
+import { projects } from "../projetos/projects";
 
 function chunkArray<T>(arr: T[], size: number): T[][] {
   return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
@@ -23,7 +23,7 @@ export default function ProjectScreen() {
   const { setOpen } = useModal()
 
   const consolePages = chunkedConsoleItems.map((chunk, index) => (
-    <BentoGrid key={index} className="max-w-4xl mx-auto md:auto-rows-[20rem]">
+    <BentoGrid key={index} className="max-w-4xl mx-auto">
       {chunk.map((item, i) => (
         <BentoGridItem key={i} {...item} onPress={
           () => {
@@ -86,8 +86,8 @@ export default function ProjectScreen() {
   return (
     <>
       {/*PARTE DO DESKTOP*/}
-      <div className="hidden lg:block h-[90%] w-[85%] overflow-hidden relative">
-        <div className="flex relative h-full mt-15">
+      <div className="hidden lg:block w-[85%] overflow-hidden min-h-[600px] relative">
+        <div className="flex relative min-h-[600px]">
           <div className="absolute left-4 h-full my-auto flex items-center transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
             {page != 0 && (
               <MdArrowBackIosNew
@@ -115,7 +115,7 @@ export default function ProjectScreen() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="absolute right-4 h-full my-auto flex items-center transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
+          <div className="absolute right-4 min-h-[600px] my-auto flex items-center transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
             {page < (consolePages.length - 1) && (
               <MdArrowForwardIos
                 size={22}
@@ -130,8 +130,8 @@ export default function ProjectScreen() {
       </div>
 
       {/*PARTE DO CELULAR*/}
-      <div className="lg:hidden h-[90%] w-[85%] overflow-hidden relative">
-        <div className="mt-30">
+      <div className="lg:hidden w-[85%] overflow-hidden relative min-h-[600px]">
+        <div className="mt-20 pb-12">
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
               key={page}
@@ -147,7 +147,7 @@ export default function ProjectScreen() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="bg-red-300 flex absolute bottom-8 w-full">
+          <div className="z-11 flex absolute bottom-3 w-full">
             <div className="h-full my-auto absolute left-0 flex items-center transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
               {page != 0 && (
                 <MdArrowBackIosNew
@@ -178,6 +178,7 @@ export default function ProjectScreen() {
           <h2 className="text-xl font-bold">{selectedProject?.icon}</h2>
           <h2 className="text-xl font-bold">{selectedProject?.title}</h2>
           <p>{selectedProject?.description}</p>
+          {selectedProject?.children}
         </ModalContent>
       </ModalBody>
     </>
