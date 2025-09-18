@@ -128,7 +128,7 @@ export default function ProjectScreen() {
 
       {/*PARTE DO CELULAR*/}
       <div className="lg:hidden w-[85%] overflow-hidden relative min-h-[600px]">
-        <div className="mt-20 pb-12">
+        <div className="mt-30 pb-12">
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
               key={page}
@@ -138,7 +138,6 @@ export default function ProjectScreen() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.45, ease: "easeInOut" }}
-              className="absolute w-full h-full"
             >
               {cellphonePages[page]}
             </motion.div>
@@ -172,6 +171,9 @@ export default function ProjectScreen() {
       </div>
       <ModalBody className="bg-zinc-900 rounded-[25px] max-w-[95%] border-2 border-white lg:w-full w-[5%]">
         <ModalContent>
+          <p className="lg:hidden block">
+            {selectedProject?.short_description}
+          </p>
           {selectedProject?.children}
         </ModalContent>
       </ModalBody>

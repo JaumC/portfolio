@@ -40,7 +40,7 @@ export const BentoGridItem = ({
     <div
       onClick={onPress}
       className={cn(
-        "group/bento cursor-pointer bg-zinc-800/70 shadow-input row-span-14 lg:row-span-10 flex gap-6 flex-col justify-between rounded-xl p-4 transition duration-200",
+        "group/bento cursor-pointer bg-zinc-800/70 shadow-input lg:row-span-10 flex gap-6 flex-col justify-between rounded-xl p-4 transition duration-200",
         className,
       )}
     >
@@ -53,7 +53,7 @@ export const BentoGridItem = ({
           alt={header?.replace("/", "")}
         />
       </div>
-      <div className="text-zinc-200 transition duration-200 group-hover/bento:translate-x-2 gap-5 flex flex-col">
+      <div className="text-zinc-200 transition duration-200 group-hover/bento:translate-x-2 lg:gap-5 flex flex-col">
         <div>
           <div className="flex items-center gap-2">
             {icon}
@@ -61,7 +61,7 @@ export const BentoGridItem = ({
               {title}
             </div>
           </div>
-          <div className="font-sans text-xs font-bold text-zinc-400 text-[15px]">
+          <div className="font-sans text-xs font-bold text-zinc-400 text-[15px] hidden lg:block">
             {short_description}
           </div>
         </div>

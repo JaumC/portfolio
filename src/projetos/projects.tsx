@@ -1,22 +1,26 @@
 import { IconFileBroken, IconSignature, IconTableColumn } from "@tabler/icons-react";
 import { FaBox } from "react-icons/fa";
 import ControlePatrimonio from "./controlePatrimonio/ControlePatrimonio";
+import { GiNestedEclipses } from "react-icons/gi";
 
 export const projects = [
   {
     title: "Controle de Patrimônio",
     short_description: "Web-mobile application for the management of defense assets.",
-    header: "/controle_patrimonio.png",
-    stacks: ["/node.svg", "/react.svg 30px", "/typescript.svg 20px", "/docker.svg 25px", "/sqlserver.svg 30px", "/tailwind.svg 30px", "figma.svg 30px"],
+    header: "controle_patrimonio.png",
+    stacks: ["node.svg", "react.svg 30px", "typescript.svg 20px", "docker.svg 25px", "sqlserver.svg 30px", "tailwind.svg 30px", "figma.svg 30px", "git.svg 30px"],
     className: "md:col-span-2",
     icon: <FaBox className="h-4 w-4" />,
     children: <ControlePatrimonio />
   },
   {
     title: "Eclipse",
-    description: "Dive into the transformative power of technology.",
+    short_description: "Reporting management system.",
+    header: "eclipse.png",
+    stacks: ["node.svg", "next.svg 25px", "typescript.svg 20px", "docker.svg 25px", "mongo.svg 30px", "tailwind.svg 30px", "git.svg 30px"],
     className: "md:col-span-2",
-    icon: <IconFileBroken className="h-4 w-4" />,
+    icon: <GiNestedEclipses className="h-4 w-4 rotate-90" />,
+    children: <ControlePatrimonio />
   },
   {
     title: "Nebula",
