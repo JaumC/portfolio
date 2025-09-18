@@ -10,7 +10,7 @@ export const BentoGrid = ({
   return (
     <div
       className={cn(
-        "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[20px] md:grid-cols-3",
+        "mx-auto grid grid-cols-1 gap-4 md:auto-rows-[20px] md:grid-cols-4",
         className,
       )}
     >
@@ -31,7 +31,7 @@ export const BentoGridItem = ({
   className?: string;
   title?: string | React.ReactNode;
   short_description?: string | React.ReactNode;
-  header?: string | React.ReactNode;
+  header?: string;
   stacks?: string[];
   icon?: React.ReactNode;
   onPress?: () => void;
@@ -40,20 +40,22 @@ export const BentoGridItem = ({
     <div
       onClick={onPress}
       className={cn(
-        "group/bento bg-zinc-800/70 shadow-input row-span-14 lg:row-span-9 flex flex-col justify-between rounded-xl p-4 transition duration-200",
+        "group/bento cursor-pointer bg-zinc-800/70 shadow-input row-span-14 lg:row-span-10 flex gap-6 flex-col justify-between rounded-xl p-4 transition duration-200",
         className,
       )}
     >
-      <div className="rounded-lg p-2 bg-neutral-200">
-        {typeof header === "string" ? (
-          <img className="rounded" src={header} alt={header.replace("/", "")} />
-        ) : (
-          header
-        )}
+      <div className="rounded-lg z-25 w-full overflow-hidden relative bg-[#13162D] min-h-[100px] lg:min-h-[160px]">
+        <div className="w-[35%] h-full blur-3xl absolute bg-radial-[at_30%_45%] right-50 from-blue-400 via-gray-400/40 to-emerald-800" />
+
+        <img
+          className="z-10 absolute inset-0 m-auto object-contain p-15 rotate-15"
+          src={header}
+          alt={header?.replace("/", "")}
+        />
       </div>
       <div className="text-zinc-200 transition duration-200 group-hover/bento:translate-x-2 gap-5 flex flex-col">
         <div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             {icon}
             <div className="mt-2 mb-2 font-pixelify-sans text-lg">
               {title}

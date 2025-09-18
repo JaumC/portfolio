@@ -16,14 +16,14 @@ export default function ProjectScreen() {
   const [page, setPage] = useState<number>(0);
   const [direction, setDirection] = useState<number>(0);
 
-  const chunkedConsoleItems = chunkArray(projects, 4)
+  const chunkedConsoleItems = chunkArray(projects, 5)
   const chunkedPhoneItems = chunkArray(projects, 2)
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
   const { setOpen } = useModal()
 
   const consolePages = chunkedConsoleItems.map((chunk, index) => (
-    <BentoGrid key={index} className="max-w-4xl mx-auto">
+    <BentoGrid key={index} className="max-w-7xl mx-auto">
       {chunk.map((item, i) => (
         <BentoGridItem key={i} {...item} onPress={
           () => {
@@ -67,7 +67,7 @@ export default function ProjectScreen() {
 
   const variants = {
     enter: (dir: number) => ({
-      x: dir > 0 ? 300 : -300,
+      x: dir > 0 ? 500 : -500,
       opacity: 0,
 
     }),
@@ -77,7 +77,7 @@ export default function ProjectScreen() {
 
     },
     exit: (dir: number) => ({
-      x: dir > 0 ? -300 : 300,
+      x: dir > 0 ? -500 : 500,
       opacity: 0,
 
     }),
@@ -101,30 +101,28 @@ export default function ProjectScreen() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="h-full w-full flex absolute top-0 items-center justify-between">
-          <div className="flex transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
-            {page != 0 && (
-              <MdArrowBackIosNew
-                size={22}
-                onClick={() => {
-                  setDirection(-1);
-                  setPage((prev) => prev - 1);
-                }}
-              />
-            )}
-          </div>
+        <div className="flex transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10 h-full left-0 flex absolute z-0 top-0 items-center justify-between">
+          {page != 0 && (
+            <MdArrowBackIosNew
+              size={22}
+              onClick={() => {
+                setDirection(-1);
+                setPage((prev) => prev - 1);
+              }}
+            />
+          )}
+        </div>
 
-          <div className="flex transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
-            {page < (consolePages.length - 1) && (
-              <MdArrowForwardIos
-                size={22}
-                onClick={() => {
-                  setDirection(1);
-                  setPage((prev) => prev + 1);
-                }}
-              />
-            )}
-          </div>
+        <div className="flex transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10 h-full right-0 flex absolute z-0 top-0 items-center justify-between">
+          {page < (consolePages.length - 1) && (
+            <MdArrowForwardIos
+              size={22}
+              onClick={() => {
+                setDirection(1);
+                setPage((prev) => prev + 1);
+              }}
+            />
+          )}
         </div>
       </div>
 
