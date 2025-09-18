@@ -69,26 +69,40 @@ export default function ProjectScreen() {
     enter: (dir: number) => ({
       x: dir > 0 ? 300 : -300,
       opacity: 0,
-      position: "absolute",
+
     }),
     center: {
       x: 0,
       opacity: 1,
-      position: "relative",
+
     },
     exit: (dir: number) => ({
       x: dir > 0 ? -300 : 300,
       opacity: 0,
-      position: "absolute",
+
     }),
   };
 
   return (
     <>
       {/*PARTE DO DESKTOP*/}
-      <div className="hidden lg:block w-[85%] overflow-hidden min-h-[600px] relative">
-        <div className="flex relative min-h-[600px]">
-          <div className="absolute left-4 h-full my-auto flex items-center transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
+      <div className="hidden lg:block w-[85%] overflow-hidden min-h-[600px] flex py-9 relative">
+        <AnimatePresence initial={false} custom={direction} mode="wait">
+          <motion.div
+            key={page}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.45, ease: "easeInOut" }}
+          >
+            {consolePages[page]}
+          </motion.div>
+        </AnimatePresence>
+
+        <div className="h-full w-full flex absolute top-0 items-center justify-between">
+          <div className="flex transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
             {page != 0 && (
               <MdArrowBackIosNew
                 size={22}
@@ -100,22 +114,7 @@ export default function ProjectScreen() {
             )}
           </div>
 
-          <AnimatePresence initial={false} custom={direction} mode="wait">
-            <motion.div
-              key={page}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.45, ease: "easeInOut" }}
-              className="absolute w-full h-full"
-            >
-              {consolePages[page]}
-            </motion.div>
-          </AnimatePresence>
-
-          <div className="absolute right-4 min-h-[600px] my-auto flex items-center transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
+          <div className="flex transition-all duration-300 cursor-pointer hover:scale-110 hover:text-zinc-400 z-10">
             {page < (consolePages.length - 1) && (
               <MdArrowForwardIos
                 size={22}
