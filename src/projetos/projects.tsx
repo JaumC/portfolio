@@ -9,7 +9,7 @@ export const projects = [
     short_description: "Aplicação web-mobile para o gerenciamento dos patrimônios das defensorias.",
     description: "Aplicação web-mobile para o gerenciamento dos patrimônios das defensorias, validação de qr codes entre outros.",
     header: "/image.png",
-    stacks: ["/react.svg 90px", "/typescript.svg 20px"],
+    stacks: ["/node.svg", "/react.svg 30px", "/typescript.svg 20px", "/docker.svg 25px", "/sqlserver.svg 30px", "/tailwind.svg 30px"],
     className: "md:col-span-2",
     icon: <FaBox className="h-4 w-4" />,
     children: <ControlePatrimonio />
