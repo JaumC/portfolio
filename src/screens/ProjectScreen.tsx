@@ -175,9 +175,6 @@ export default function ProjectScreen() {
       </div>
       <ModalBody className="bg-zinc-900 rounded-[25px] max-w-[95%] border-2 border-white lg:w-full w-[5%]">
         <ModalContent>
-          <h2 className="text-xl font-bold">{selectedProject?.icon}</h2>
-          <h2 className="text-xl font-bold">{selectedProject?.title}</h2>
-          <p>{selectedProject?.description}</p>
           {selectedProject?.children}
         </ModalContent>
       </ModalBody>
