@@ -19,7 +19,7 @@ export const BentoGrid = ({
   );
 };
 
-export const BentoGridItem = ({
+export const BentoGridStackItem = ({
   className,
   title,
   short_description,
@@ -40,18 +40,18 @@ export const BentoGridItem = ({
     <div
       onClick={onPress}
       className={cn(
-        "group/bento cursor-pointer bg-zinc-800/70 shadow-input lg:row-span-10 flex gap-6 flex-col justify-between rounded-xl p-4 transition duration-200",
+        "group/bento cursor-pointer bg-zinc-800 shadow-input lg:row-span-10 flex gap-6 flex-col justify-between rounded-xl p-4 transition duration-200",
         className,
       )}
     >
       <div className="rounded-lg z-25 w-full overflow-hidden relative bg-[#13162D] min-h-[100px] lg:min-h-[160px]">
         <div className="w-[35%] h-full blur-3xl absolute bg-radial-[at_30%_45%] right-50 from-blue-400 via-gray-400/40 to-emerald-800" />
-
         <img
           className="z-10 absolute inset-0 m-auto object-contain p-15 rotate-15"
           src={header}
           alt={header?.replace("/", "")}
         />
+
       </div>
       <div className="text-zinc-200 transition duration-200 group-hover/bento:translate-x-2 lg:gap-5 flex flex-col">
         <div>
@@ -83,6 +83,43 @@ export const BentoGridItem = ({
               </div>
             );
           })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+export const BentoGridAboutItem = ({
+  className,
+  title,
+  description,
+  header,
+  icon,
+}: {
+  className?: string;
+  title?: string | React.ReactNode;
+  description?: string | React.ReactNode;
+  header?: React.ReactNode;
+  icon?: React.ReactNode;
+}) => {
+  return (
+    <div
+      className={cn(
+        "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-2 lg:space-y-4 rounded-xl border border-neutral-200 bg-white p-4 transition duration-200",
+        className,
+      )}
+    >
+      {header}
+      <div className="transition duration-200 group-hover/bento:translate-x-2">
+        <div className="flex lg:flex-col flex-row items-center lg:items-start gap-2">
+          {icon}
+          <div className="mt-2 mb-2 font-sans font-bold text-neutral-600 text-[15px] lg:text-lg">
+            {title}
+          </div>
+        </div>
+        <div className="font-sans font-normal text-neutral-600">
+          {description}
         </div>
       </div>
     </div>

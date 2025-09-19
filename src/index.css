@@ -5,16 +5,36 @@
 @custom-variant dark (&:is(.dark *));
 
 .hide-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
+  /* Chrome, Safari and Opera */
+}
+
+@keyframes moveUpLoop {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.animate-move-up {
+  animation: moveUpLoop 4s linear infinite;
+}
+
+.animate-move-up-delay {
+  animation: moveUpLoop 5s linear infinite;
 }
 
 @theme {
-  --font-pixelify-sans: 'Pixelify Sans', sans-serif; 
+  --font-pixelify-sans: 'Pixelify Sans', sans-serif;
 }
 
 @theme inline {
@@ -128,6 +148,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

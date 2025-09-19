@@ -9,13 +9,13 @@ export const links: Links[] = ["home", "about", "projects", "contact"];
 
 export default function NavBar({ onScroll, activeSection }: NavBarProps) {
 
-  var text_color = activeSection === "contact" || activeSection === "about" ? "text-zinc-300" : "text-zinc-600"
-  var link_color = activeSection === "contact" || activeSection === "about"
+  const text_color = activeSection === "contact" || activeSection === "about" ? "text-zinc-300" : "text-zinc-600"
+  const link_color = activeSection === "contact" || activeSection === "about"
 
   return (
     <div className={`${link_color ? "text-zinc-600" : "text-zinc-300"} font-pixelify-sans bg-transparent transition-all duration-200 ${activeSection === "home" ? "hidden" : "flex"} w-full h-[125px] lg:h-[80px] flex-col lg:flex-row items-center justify-between lg:px-[30px] px-[15px]`}>
       <div className="flex-row w-full flex items-center justify-between lg:justify-start gap-[20px] py-[10px] lg:py-0 lg:pt-0">
-        <img src="/MeSquare.jpg" alt="Mikola" className={`w-[60px] h-[60px] rounded-[25px] duration-300 transition-opacity ${activeSection === "home" ? "opacity-[0]" : "opacity-[1.0]"}`} />
+        <img src="/me_square.jpg" alt="Acua" className={`w-[60px] h-[60px] rounded-[25px] duration-300 transition-opacity ${activeSection === "home" ? "opacity-[0]" : "opacity-[1.0]"}`} />
         <div className="flex flex-col">
           <p className={`text-[22px] lg:text-[28px] duration-300 transition-opacity ${activeSection === "home" ? "opacity-[0]" : "opacity-[1.0]"}`}>
             João Vitor Viana Chaves
@@ -52,7 +52,7 @@ export default function NavBar({ onScroll, activeSection }: NavBarProps) {
         border-b-2
         mb-4
         select-none
-        ${activeSection === link ? "lg:border-[#7815ca] border-[#7815ca]" : "border-transparent"}
+        ${activeSection === link ? "lg:border-[#2193CC] border-[#2193CC]" : "border-transparent"}
       `}
             >
               <div
