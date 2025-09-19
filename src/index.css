@@ -16,6 +16,24 @@
   /* Chrome, Safari and Opera */
 }
 
+@keyframes moveSideLoop {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-side {
+  animation: moveSideLoop 4s linear infinite;
+}
+
+.animate-side-delay {
+  animation: moveSideLoop 5s linear infinite;
+}
+
+
 @keyframes moveUpLoop {
   0% {
     transform: translateY(100%);
@@ -32,6 +50,24 @@
 .animate-move-up-delay {
   animation: moveUpLoop 5s linear infinite;
 }
+
+@keyframes moveDownLoop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-move-down {
+  animation: moveDownLoop 4s linear infinite;
+}
+
+.animate-move-down-delay {
+  animation: moveDownLoop 5s linear infinite;
+}
+
 
 @theme {
   --font-pixelify-sans: 'Pixelify Sans', sans-serif;

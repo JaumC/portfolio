@@ -409,8 +409,8 @@ export default function AboutScreen() {
 
         <div className="absolute h-full w-full overflow-hidden">
           <div className="h-full w-[500px] bg-[#2193CC] z-0 flex absolute left-50" />
-          <div className="h-full animate-move-up-delay w-[50px] bg-[#2193CC] z-0 flex absolute right-5" />
-          <div className="h-full animate-move-up w-[10px] bg-[#2193CC] z-0 flex absolute right-35" />
+          <div className="h-full animate-move-down-delay w-[50px] bg-[#2193CC] z-0 flex absolute right-5" />
+          <div className="h-full animate-move-down w-[10px] bg-[#2193CC] z-0 flex absolute right-35" />
         </div>
 
         <BentoGrid className="max-w-9xl mx-auto z-10 md:auto-rows-[20rem]">
@@ -431,8 +431,8 @@ export default function AboutScreen() {
 
         <div className="absolute h-full w-full overflow-hidden">
           <div className="h-full w-[80px] bg-[#2193CC] z-0 flex absolute left-5" />
-          <div className="h-full animate-move-up w-[10px] bg-[#2193CC] z-0 flex absolute right-15" />
-          <div className="h-full animate-move-up-delay w-[10px] bg-[#2193CC] z-0 flex absolute right-20" />
+          <div className="h-full animate-move-down w-[10px] bg-[#2193CC] z-0 flex absolute right-15" />
+          <div className="h-full animate-move-down-delay w-[10px] bg-[#2193CC] z-0 flex absolute right-20" />
         </div>
 
         <div className="lg:hidden w-full z-10 min-w-[95%] max-w-[95%] h-full overflow-hidden relative">
