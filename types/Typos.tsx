@@ -14,11 +14,11 @@ export type Links =
     "projects" |
     "contact";
 
-export const pagesComponents: Record<Links, JSX.Element> = {
-    home: <HomeCard />,
-    about: <AboutScreen />,
-    projects: <ProjectScreen />,
-    contact: <ContactScreen />,
+export const pagesComponents: Record<string, (props: { scrollRef?: React.RefObject<HTMLDivElement | null> }) => JSX.Element> = {
+  home: () => <HomeCard />,
+  about: () => <AboutScreen />,
+  projects: () => <ProjectScreen />,
+  contact: ({ scrollRef }) => <ContactScreen scrollRef={scrollRef} />,
 }
 
 export const iconsLinks: Record<Links, ReactElement> = {

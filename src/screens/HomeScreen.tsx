@@ -87,13 +87,14 @@ export default function HomeScreen() {
       >
         {pages.map((page, index) => (
           <div key={page.id}>
-
             <section
-              id={page.id}
               className="snap-start h-[100dvh] w-full flex lg:items-center items-center justify-center"
               style={{ backgroundColor: page.bg }}
+              id={page.id}
             >
-              {pagesComponents[page.id]}
+              {page.id === "contact"
+                ? pagesComponents[page.id]({ scrollRef })
+                : pagesComponents[page.id]({})} {/* outros não recebem scrollRef */}
             </section>
             {index < pages.length - 1 && (
               <GradientDivider from={page.bg} to={pages[index + 1].bg} />
