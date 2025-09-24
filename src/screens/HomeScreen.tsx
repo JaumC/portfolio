@@ -77,7 +77,7 @@ export default function HomeScreen() {
   }, [])
 
   return (
-    <DotBackgroundDemo className="w-full bg-[#2193CC]/10 h-[100dvh] z-9 relative flex flex-col items-center justify-center">
+    <DotBackgroundDemo className="w-full bg-[#2193CC]/10 h-[100dvh] overflow-x-hidden z-9 relative flex flex-col items-center justify-center">
       <header className='fixed top-0 left-0 w-full z-50 transition-all duration-500'>
         <NavBar onScroll={handleScroll} activeSection={activeSection} />
       </header>
