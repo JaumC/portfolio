@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import NavBar from "../components/navbar/NavBar"
-import { pages, pagesComponents } from "../../types/Typos"
+import { pages, pagesComponents } from "../types/Typos"
 import GradientDivider from "../components/GradientDivider/GradientDivider"
 import { MdKeyboardDoubleArrowDown } from "react-icons/md"
 import { DotBackgroundDemo } from "../components/ui/dot- background"
@@ -94,7 +94,7 @@ export default function HomeScreen() {
             >
               {page.id === "contact"
                 ? pagesComponents[page.id]({ scrollRef })
-                : pagesComponents[page.id]({})} {/* outros não recebem scrollRef */}
+                : pagesComponents[page.id]({})} 
             </section>
             {index < pages.length - 1 && (
               <GradientDivider from={page.bg} to={pages[index + 1].bg} />

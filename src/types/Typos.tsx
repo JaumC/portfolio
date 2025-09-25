@@ -1,11 +1,10 @@
 import type { JSX, ReactElement } from "react";
 
-import HomeCard from "../src/components/card/HomeCard";
-import AboutScreen from "../src/screens/AboutScreen";
-import ContactScreen from "../src/screens/ContactScreen";
-import ProjectScreen from "../src/screens/ProjectScreen";
-
 import { FaEnvelope, FaFolderOpen, FaHome, FaUser } from "react-icons/fa";
+import HomeCard from "../components/card/HomeCard";
+import AboutScreen from "../screens/AboutScreen";
+import ProjectScreen from "../screens/ProjectScreen";
+import ContactScreen from "../screens/ContactScreen";
 
 
 export type Links =
