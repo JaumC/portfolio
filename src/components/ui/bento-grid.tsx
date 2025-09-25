@@ -40,11 +40,11 @@ export const BentoGridStackItem = ({
     <div
       onClick={onPress}
       className={cn(
-        "group/bento cursor-pointer bg-zinc-800 shadow-input lg:row-span-10 flex gap-6 flex-col justify-between rounded-xl p-4 transition duration-200",
+        "group/bento cursor-pointer bg-zinc-800 shadow-input lg:row-span-9 flex gap-2 flex-col justify-between rounded-xl p-4 transition duration-200",
         className,
       )}
     >
-      <div className="rounded-lg z-25 w-full overflow-hidden relative bg-[#13162D] min-h-[100px] lg:min-h-[160px]">
+      <div className="rounded-lg z-25 w-full overflow-hidden relative bg-[#13162D] min-h-[100px] lg:min-h-[150px]">
         <div className="w-[35%] h-full blur-3xl absolute bg-radial-[at_30%_45%] right-50 from-blue-400 via-gray-400/40 to-emerald-800" />
         <img
           className="z-10 absolute inset-0 m-auto object-contain p-15 rotate-15"
@@ -53,7 +53,7 @@ export const BentoGridStackItem = ({
         />
 
       </div>
-      <div className="text-zinc-200 transition duration-200 group-hover/bento:translate-x-2 lg:gap-5 flex flex-col">
+      <div className="text-zinc-200 transition duration-200 group-hover/bento:translate-x-2 lg:gap-4 flex flex-col">
         <div>
           <div className="flex items-center gap-2">
             {icon}
