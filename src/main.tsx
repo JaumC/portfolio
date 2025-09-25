@@ -17,7 +17,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ModalProvider>
       <div
-        className="w-full bg-[#121317] flex justify-center text-white"
+        className="w-full bg-[#121317] flex justify-center overflow-x-hidden text-white"
         style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
       >
         <HomeScreen />

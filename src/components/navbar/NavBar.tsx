@@ -57,20 +57,20 @@ export default function NavBar({ onScroll, activeSection }: NavBarProps) {
             >
               <div
                 className={`${activeSection === link
-                    ? link_color
-                      ? "text-zinc-800"
-                      : "text-zinc-100"
-                    : text_color
+                  ? link_color
+                    ? "text-zinc-800"
+                    : "text-zinc-100"
+                  : text_color
                   }`}
               >
                 {iconsLinks[link]}
               </div>
               <p
                 className={`${activeSection === link
-                    ? link_color
-                      ? "text-zinc-800"
-                      : "text-zinc-100"
-                    : text_color
+                  ? link_color
+                    ? "text-zinc-800"
+                    : "text-zinc-100"
+                  : text_color
                   }`}
               >
                 {link.charAt(0).toUpperCase() + link.slice(1)}
