@@ -28,11 +28,16 @@ export default function ContactScreen({ scrollRef }: ContactScreenProps) {
     "Olá, gostaria de saber mais sobre seu currículo!",
   ];
 
-  const onSubmit = (type: string) => {
-    if (type === "wpp") window.open(url_wpp, "_blank", "noopener,noreferrer");
-    else window.open(url_email, "_blank", "noopener,noreferrer");
-  }
-
+ const onSubmit = (type: string) => {
+    if (type === "wpp") {
+      const url_wpp = `https://wa.me/${phone}?text=${encodeURIComponent(messageWpp)}`;
+      window.open(url_wpp, "_blank", "noopener,noreferrer");
+    } else {
+      const url_email = `mailto:${email}?subject=Contato%20via%20site&body=${encodeURIComponent(messageEmail)}`;
+      window.open(url_email, "_blank", "noopener,noreferrer");
+    }
+  };
+  
   return (
     <footer className="w-full h-full relative">
       <div className="h-[50px] w-full z-0 absolute top-50 left-0 bg-zinc-300 animate-side" />
