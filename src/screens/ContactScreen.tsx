@@ -14,10 +14,8 @@ export default function ContactScreen({ scrollRef }: ContactScreenProps) {
   const [messageEmail, setMessageEmail] = useState<string>("Olá, gostaria de saber mais sobre seu currículo!")
 
   const phone = "5561993298498";
-  const url_wpp = `https://wa.me/${phone}?text=${encodeURIComponent(messageWpp)}`;
 
   const email = "jvvianachaves@gmail.com";
-  const url_email = `mailto:${email}?subject=Contato%20via%20site&body=${encodeURIComponent(messageEmail)}`;
 
   const placeholdersWpp = [
     "Olá João, tudo bem?",
