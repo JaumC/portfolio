@@ -1,11 +1,11 @@
-import { iconsLinks, type Links } from "../../types/Typos";
+import { iconsLinks, links } from "../../types/Typos";
 
 type NavBarProps = {
   onScroll: (id: string) => void;
   activeSection: string;
 }
 
-export const links: Links[] = ["home", "about", "projects", "contact"];
+export const NavbarSpacer = () => <div className="h-[160px] lg:h-[100px] w-full" />
 
 export default function NavBar({ onScroll, activeSection }: NavBarProps) {
 

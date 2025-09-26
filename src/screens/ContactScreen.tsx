@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { useState } from "react";
 import { PlaceholdersAndVanishInput } from "../components/ui/placeholders-and-vanish-input";
+import { NavbarSpacer } from "../components/navbar/NavBar";
 
 type ContactScreenProps = {
   scrollRef?: React.RefObject<HTMLDivElement | null>
@@ -38,6 +39,8 @@ export default function ContactScreen({ scrollRef }: ContactScreenProps) {
   
   return (
     <footer className="w-full h-full relative">
+      <NavbarSpacer/>
+      
       <div className="h-[50px] w-full z-0 absolute top-50 left-0 bg-zinc-300 animate-side" />
       <div className="h-[10px] w-full z-0 absolute top-40 left-0 bg-zinc-300 animate-side-delay" />
       <div className="h-[30px] w-full z-0 absolute top-80 left-0 bg-zinc-300 animate-side-delay" />
@@ -51,7 +54,7 @@ export default function ContactScreen({ scrollRef }: ContactScreenProps) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="flex lg:flex-row flex-col w-full mt-30 lg:mt-0 gap-4 lg:gap-10 h-full items-center justify-center text-white">
+          className="flex lg:flex-row flex-col w-full gap-4 lg:gap-10 h-full items-center justify-center text-white">
 
           <motion.div
             className="bg-[#121317] hover:scale-102 transition-[scale] duration-300 w-[95%] lg:w-[600px] p-4 rounded-[15px] gap-6 flex flex-col"

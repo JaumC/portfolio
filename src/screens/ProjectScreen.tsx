@@ -6,6 +6,7 @@ import { ModalBody, ModalContent, useModal } from "../components/ui/animated-mod
 import { BentoGrid, BentoGridStackItem } from "../components/ui/bento-grid";
 import { projects } from "../projetos/projects";
 import { chunkArray } from "../utils/ChunkArray";
+import { NavbarSpacer } from "../components/navbar/NavBar";
 
 export default function ProjectScreen() {
   const [page, setPage] = useState<number>(0);
@@ -79,7 +80,9 @@ export default function ProjectScreen() {
   };
 
   return (
-    <div className="h-screen w-full w-[85%] min-h-screen relative flex flex-col justify-center items-center">
+    <div className="h-full w-full w-[85%] relative flex flex-col justify-center items-center">
+        <NavbarSpacer/>
+
       <div className="lg:block hidden absolute h-full top-0 w-full overflow-hidden">
         <div className='bg-white w-[100px] h-full absolute top-0 z-0 left-100' />
         <div className='bg-white w-[100px] h-full absolute top-0 z-0 left-50' />

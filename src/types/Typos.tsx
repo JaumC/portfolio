@@ -6,6 +6,7 @@ import AboutScreen from "../screens/AboutScreen";
 import ProjectScreen from "../screens/ProjectScreen";
 import ContactScreen from "../screens/ContactScreen";
 
+export const links: Links[] = ["home", "about", "projects", "contact"];
 
 export type Links =
     "home" |

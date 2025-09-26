@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import NavBar from "../components/navbar/NavBar"
+import NavBar, { NavbarSpacer } from "../components/navbar/NavBar"
 import { pages, pagesComponents } from "../types/Typos"
 import GradientDivider from "../components/GradientDivider/GradientDivider"
 import { MdKeyboardDoubleArrowDown } from "react-icons/md"
@@ -81,9 +81,10 @@ export default function HomeScreen() {
       <header className='fixed top-0 left-0 w-full z-50 transition-all duration-500'>
         <NavBar onScroll={handleScroll} activeSection={activeSection} />
       </header>
+      <NavbarSpacer/>
       <main
         ref={scrollRef}
-        className="flex-1 w-full h-[100dvh] snap-y snap-mandatory overflow-y-scroll hide-scrollbar scroll-smooth"
+        className="flex-1 w-full -mt-[160px] lg:-m-[100px] snap-y snap-mandatory overflow-y-scroll hide-scrollbar scroll-smooth"
       >
         {pages.map((page, index) => (
           <div key={page.id}>

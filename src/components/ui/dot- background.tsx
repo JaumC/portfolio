@@ -6,7 +6,7 @@ export function DotBackgroundDemo({ className, children }: { className?: string,
       className={className}>
       <div
         className={cn(
-          "absolute inset-0 z-9 pointer-events-none animate-pulse",
+          "absolute inset-0 z-9 pointer-events-none",
           "lg:[background-size:80px_80px] [background-size:40px_40px]",
           "[background-image:radial-gradient(#03344D_1px,transparent_1px)]"
         )}

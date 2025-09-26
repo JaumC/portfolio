@@ -11,6 +11,7 @@ import { cn } from "../components/lib/utils";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { chunkArray } from "../utils/ChunkArray";
 import { useState } from "react";
+import { NavbarSpacer } from "../components/navbar/NavBar";
 
 const SkeletonOne = () => {
   const variants = {
@@ -206,10 +207,10 @@ const SkeletonFour = () => {
       </motion.div>
       <motion.div className="h-full relative z-20 w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center">
         <img
-          src="acua_logo.png"
+          src="logo_acua_black.png"
           alt="avatar"
-          height="130"
-          width="110"
+          height="100"
+          width="100"
           className="rounded-full h-10 w-10"
         />
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
@@ -404,14 +405,16 @@ export default function AboutScreen() {
     }),
   };
   return (
-    <div className="w-[85%] h-screen relative flex items-center justify-center mx-auto">
-      <div className="hidden lg:flex text-black h-full flex items-center justify-center m-auto text-xl font-semibold flex-col gap-2">
+    <div className="w-[85%] h-full relative items-center justify-center">
+
+      <div className="hidden lg:flex w-full text-black h-full flex items-center justify-center m-auto text-xl font-semibold flex-col gap-2">
 
         <div className="absolute h-full w-full overflow-hidden">
           <div className="h-full w-[500px] bg-[#2193CC] z-0 flex absolute left-50" />
           <div className="h-full animate-move-down-delay w-[50px] bg-[#2193CC] z-0 flex absolute right-5" />
           <div className="h-full animate-move-down w-[10px] bg-[#2193CC] z-0 flex absolute right-35" />
         </div>
+      <NavbarSpacer />
 
         <BentoGrid className="max-w-9xl mx-auto z-10 md:auto-rows-[20rem]">
           {pcItems.map((item, i) => (

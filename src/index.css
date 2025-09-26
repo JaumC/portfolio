@@ -20,6 +20,7 @@
   0% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(-100%);
   }
@@ -38,6 +39,7 @@
   0% {
     transform: translateY(100%);
   }
+
   100% {
     transform: translateY(-100%);
   }
@@ -55,6 +57,7 @@
   0% {
     transform: translateY(-100%);
   }
+
   100% {
     transform: translateY(100%);
   }
@@ -68,6 +71,19 @@
   animation: moveDownLoop 5s linear infinite;
 }
 
+@keyframes moveDiagonal {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 40px -40px;
+  }
+}
+
+.animate-move-diagonal {
+  animation: moveDiagonal 2s linear infinite;
+}
 
 @theme {
   --font-pixelify-sans: 'Pixelify Sans', sans-serif;
